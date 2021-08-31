@@ -4,6 +4,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 import DiceBox from "./components/DiceBox";
 import Player from "./components/Player";
+import CurrentTotal from "./components/CurrentTotal";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <header className="App-header"></header>
         <DiceBox />
+        <CurrentTotal />
         <Player whichPlayer="0" />
         <Player whichPlayer="1" />
       </div>

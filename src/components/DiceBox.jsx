@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import "../styling/DiceBox.css";
 
-function DiceBox() {
+function DiceBox({ diceRoll }) {
   function handleClick() {
-    let randomNum;
-    randomNum = Math.floor(Math.random() * 6) + 1;
+    // let randomNum = Math.floor(Math.random() * 6) + 1;
   }
 
   return (
@@ -16,13 +15,13 @@ function DiceBox() {
           handleClick();
         }}
       >
-        <div>this is a dice:</div>
+        <div>this is a dice: {diceRoll}</div>
       </div>
     </>
   );
 }
 function mapStateToProps(state) {
-  return {};
+  return { diceRoll: state.turnInfo[0].currentRoll };
 }
 function mapDispatchToProps(dispatch) {
   return {};
