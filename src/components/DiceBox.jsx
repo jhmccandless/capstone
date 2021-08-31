@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import "../DiceBox.css";
+import { connect } from "react-redux";
+import "../styling/DiceBox.css";
 
 function DiceBox() {
-  const [currRanNum, setCurrRanNum] = useState("");
-
   function handleClick() {
-    let randomNum = Math.floor(Math.random() * 6) + 1;
-    setCurrRanNum(randomNum);
+    let randomNum;
+    randomNum = Math.floor(Math.random() * 6) + 1;
   }
 
   return (
@@ -17,10 +16,18 @@ function DiceBox() {
           handleClick();
         }}
       >
-        this is a dice: {currRanNum}
+        <div>this is a dice:</div>
       </div>
     </>
   );
 }
+function mapStateToProps(state) {
+  return {};
+}
+function mapDispatchToProps(dispatch) {
+  return {};
+}
 
-export default DiceBox;
+const connectedDiceBox = connect(mapStateToProps, mapDispatchToProps)(DiceBox);
+
+export default connectedDiceBox;

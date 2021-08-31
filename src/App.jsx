@@ -1,8 +1,9 @@
 import React from "react";
-import "./App.css";
+import "./styling/App.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import DiceBox from "./components/DiceBox";
+import Player from "./components/Player";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       <div className="App">
         <header className="App-header"></header>
         <DiceBox />
+        <Player whichPlayer="0" />
+        <Player whichPlayer="1" />
       </div>
     </Provider>
   );

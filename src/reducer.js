@@ -2,16 +2,14 @@ const initialState = {
   turnInfo: [{ currentRoll: 3 }, { currentTotal: 4 }],
   playersInfo: [
     {
-      player0: {
-        name: "",
-        player0FullTotal: 20,
-      },
+      name: "Player 1",
+      score: 20,
+      isPlaying: true,
     },
     {
-      player1: {
-        name: "",
-        player1FullTotal: 30,
-      },
+      name: "Player 2",
+      score: 30,
+      isPlaying: false,
     },
   ],
 };
