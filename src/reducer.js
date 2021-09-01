@@ -18,9 +18,13 @@ function game_reducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
     case "DICE_ROLL_UPDATE":
-      console.log(action);
+      const tempCurrTotal = state.turnInfo[1].currentTotal + action.data;
       return {
         ...state,
+        turnInfo: [
+          { currentRoll: action.data },
+          { currentTotal: tempCurrTotal },
+        ],
       };
     default:
       return state;

@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { diceRollUpdate } from "../action.js";
+import { diceRollUpdateAction } from "../action.js";
 import "../styling/DiceBox.css";
 
-function DiceBox({ diceRoll }) {
+function DiceBox({ diceRoll, diceRollUpdate }) {
   function handleClick() {
     let randomNum = Math.floor(Math.random() * 6) + 1;
     console.log(randomNum);
@@ -23,13 +23,15 @@ function DiceBox({ diceRoll }) {
     </>
   );
 }
+
 function mapStateToProps(state) {
   return { diceRoll: state.turnInfo[0].currentRoll };
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     diceRollUpdate: function (data) {
-      dispatch(diceRollUpdate(data));
+      dispatch(diceRollUpdateAction(data));
     },
   };
 }

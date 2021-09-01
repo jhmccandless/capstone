@@ -1,5 +1,4 @@
-export function diceRollUpdate(data) {
-  console.log(data);
+export function diceRollUpdateAction(data) {
   return {
     type: "DICE_ROLL_UPDATE",
     data,
