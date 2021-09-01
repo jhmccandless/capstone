@@ -1,6 +1,7 @@
-export function updateTurnInfo() {
+export function diceRollUpdate(data) {
+  console.log(data);
   return {
-    type: "UPDATE_TURN_INFO",
+    type: "DICE_ROLL_UPDATE",
     data,
   };
 }

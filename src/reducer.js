@@ -15,7 +15,13 @@ const initialState = {
 };
 
 function game_reducer(state = initialState, action) {
+  console.log(action);
   switch (action.type) {
+    case "DICE_ROLL_UPDATE":
+      console.log(action);
+      return {
+        ...state,
+      };
     default:
       return state;
   }
