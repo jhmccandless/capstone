@@ -4,3 +4,9 @@ export function diceRollUpdateAction(data) {
     data,
   };
 }
+
+export function diceRollOneAction() {
+  return {
+    type: "ONE_ON_DICE",
+  };
+}

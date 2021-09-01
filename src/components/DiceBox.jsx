@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { diceRollUpdateAction } from "../action.js";
+import { diceRollUpdateAction, diceRollOneAction } from "../action.js";
 import "../styling/DiceBox.css";
 
-function DiceBox({ diceRoll, diceRollUpdate }) {
+function DiceBox({ diceRoll, diceRollUpdate, diceRollsOne }) {
   function handleClick() {
     let randomNum = Math.floor(Math.random() * 6) + 1;
-    console.log(randomNum);
-    diceRollUpdate(randomNum);
+    randomNum === 1 ? diceRollsOne() : diceRollUpdate(randomNum);
   }
 
   return (
@@ -32,6 +31,9 @@ function mapDispatchToProps(dispatch) {
   return {
     diceRollUpdate: function (data) {
       dispatch(diceRollUpdateAction(data));
+    },
+    diceRollsOne: function () {
+      dispatch(diceRollOneAction());
     },
   };
 }

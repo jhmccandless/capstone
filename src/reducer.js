@@ -26,6 +26,11 @@ function game_reducer(state = initialState, action) {
           { currentTotal: tempCurrTotal },
         ],
       };
+    case "ONE_ON_DICE":
+      return {
+        ...state,
+        turnInfo: [{ currentRoll: 0 }, { currentTotal: 0 }],
+      };
     default:
       return state;
   }
