@@ -10,3 +10,10 @@ export function diceRollOneAction() {
     type: "ONE_ON_DICE",
   };
 }
+
+export function holdCurrentTotalAction(data) {
+  return {
+    type: "HOLD_CURRENT_TOTAL",
+    data,
+  };
+}

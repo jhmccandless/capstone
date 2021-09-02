@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import DiceBox from "./components/DiceBox";
 import Player from "./components/Player";
 import CurrentTotal from "./components/CurrentTotal";
+import Button from "./components/Button";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <CurrentTotal />
         <Player whichPlayer="0" />
         <Player whichPlayer="1" />
+        <Button />
       </div>
     </Provider>
   );
