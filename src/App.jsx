@@ -1,13 +1,17 @@
 import React from "react";
-import "./App.css";
-import DiceBox from "./components/DiceBox";
+import "./styling/App.css";
+import store from "./store";
+import { Provider } from "react-redux";
+import MainGame from "./containers/MainGame";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
-      <DiceBox />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <header className="App-header"></header>
+        <MainGame />
+      </div>
+    </Provider>
   );
 }
 
