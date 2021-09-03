@@ -1,6 +1,6 @@
 import React from "react";
 
-function ButtonUI({ handleDesiredClick }) {
+function ButtonUI({ handleDesiredClick, name }) {
   // console.log(handleDesiredClick);
   return (
     <>
@@ -9,7 +9,7 @@ function ButtonUI({ handleDesiredClick }) {
           handleDesiredClick();
         }}
       >
-        this is the a button
+        this is the a button {name}
       </div>
     </>
   );

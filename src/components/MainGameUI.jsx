@@ -3,8 +3,6 @@ import DiceRoll from "../containers/DiceRoll";
 import Player from "./Player";
 import CurrentTotal from "./CurrentTotal";
 import ButtonUI from "./ButtonUI";
-import { connect } from "react-redux";
-import { holdCurrentTotalAction } from "../action";
 
 function MainGameUI({ currentRollInfo, holdCurrentTotal }) {
   // getting the current player index#
@@ -17,9 +15,11 @@ function MainGameUI({ currentRollInfo, holdCurrentTotal }) {
   const combinedInfo = [currentPlayer, currentRollInfo.turnInfo];
 
   function handleHoldClick() {
-    console.log("this has been clicked");
+    // console.log(props);
     holdCurrentTotal(combinedInfo);
   }
+
+  function handleResetClick() {}
   return (
     <>
       <h2>this is the main game page</h2>
@@ -28,28 +28,19 @@ function MainGameUI({ currentRollInfo, holdCurrentTotal }) {
       <Player whichPlayer="0" />
       <Player whichPlayer="1" />
       <ButtonUI
+        name="Hold"
         handleDesiredClick={() => {
           handleHoldClick();
+        }}
+      />
+      <ButtonUI
+        name="Reset"
+        handleDesiredClick={() => {
+          handleResetClick();
         }}
       />
     </>
   );
 }
 
-function mapStateToProps(state) {
-  console.log("still not working wrong");
-  return { currentRollInfo: state };
-}
-
-function mapDispatchToProps(dispatch) {
-  console.log("did i hit this? wrong");
-  return {
-    holdCurrentTotal: function (data) {
-      dispatch(holdCurrentTotalAction(data));
-    },
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainGameUI);
-
-// export default MainGameUI;
+export default MainGameUI;

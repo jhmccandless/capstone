@@ -83,6 +83,7 @@ function game_reducer(state = initialState, action) {
           ],
         };
       }
+      break;
     default:
       return state;
   }
