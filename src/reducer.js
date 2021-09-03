@@ -45,7 +45,7 @@ function game_reducer(state = initialState, action) {
       };
     case "HOLD_CURRENT_TOTAL":
       if (action.data[0] === 0) {
-        let newPlayerScore = (state.playersInfo[0].score +=
+        const newPlayerScore = (state.playersInfo[0].score +=
           action.data[1][1].currentTotal);
         return {
           ...state,
@@ -83,7 +83,6 @@ function game_reducer(state = initialState, action) {
           ],
         };
       }
-
     default:
       return state;
   }
