@@ -83,7 +83,10 @@ function game_reducer(state = initialState, action) {
           ],
         };
       }
-      break;
+    case "END_GAME":
+      return {
+        ...(state = initialState),
+      };
     default:
       return state;
   }

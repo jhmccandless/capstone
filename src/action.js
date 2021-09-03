@@ -17,3 +17,9 @@ export function holdCurrentTotalAction(data) {
     data,
   };
 }
+
+export function endGameAction() {
+  return {
+    type: "END_GAME",
+  };
+}

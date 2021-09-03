@@ -4,7 +4,7 @@ import Player from "./Player";
 import CurrentTotal from "./CurrentTotal";
 import ButtonUI from "./ButtonUI";
 
-function MainGameUI({ currentRollInfo, holdCurrentTotal }) {
+function MainGameUI({ currentRollInfo, holdCurrentTotal, endGameReset }) {
   // getting the current player index#
   let currentPlayer;
   currentRollInfo.playersInfo[0].isPlaying
@@ -19,7 +19,10 @@ function MainGameUI({ currentRollInfo, holdCurrentTotal }) {
     holdCurrentTotal(combinedInfo);
   }
 
-  function handleResetClick() {}
+  function handleResetClick() {
+    console.log("restart game");
+    endGameReset();
+  }
   return (
     <>
       <h2>this is the main game page</h2>
