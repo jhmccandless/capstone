@@ -1,5 +1,5 @@
 const initialState = {
-  turnInfo: [{ currentRoll: 0 }, { currentTotal: 0 }],
+  gameInfo: [{ currentRoll: 0 }, { currentTotal: 0 }, { gameEndTotal: 100 }],
   playersInfo: [
     {
       name: "Player 1",
@@ -16,20 +16,27 @@ const initialState = {
 
 function game_reducer(state = initialState, action) {
   console.log(action);
+  const currentGameEnd = state.gameInfo[2].gameEndTotal;
   switch (action.type) {
     case "DICE_ROLL_UPDATE":
-      const tempCurrTotal = state.turnInfo[1].currentTotal + action.data;
+      const tempCurrTotal = state.gameInfo[1].currentTotal + action.data;
+
       return {
         ...state,
-        turnInfo: [
+        gameInfo: [
           { currentRoll: action.data },
           { currentTotal: tempCurrTotal },
+          { gameEndTotal: currentGameEnd },
         ],
       };
     case "ONE_ON_DICE":
       return {
         ...state,
-        turnInfo: [{ currentRoll: 0 }, { currentTotal: 0 }],
+        gameInfo: [
+          { currentRoll: 0 },
+          { currentTotal: 0 },
+          { gameEndTotal: currentGameEnd },
+        ],
         playersInfo: [
           {
             name: state.playersInfo[0].name,
@@ -49,7 +56,11 @@ function game_reducer(state = initialState, action) {
           action.data[1][1].currentTotal);
         return {
           ...state,
-          turnInfo: [{ currentRoll: 0 }, { currentTotal: 0 }],
+          gameInfo: [
+            { currentRoll: 0 },
+            { currentTotal: 0 },
+            { gameEndTotal: currentGameEnd },
+          ],
           playersInfo: [
             {
               name: state.playersInfo[0].name,
@@ -68,7 +79,11 @@ function game_reducer(state = initialState, action) {
           action.data[1][1].currentTotal);
         return {
           ...state,
-          turnInfo: [{ currentRoll: 0 }, { currentTotal: 0 }],
+          gameInfo: [
+            { currentRoll: 0 },
+            { currentTotal: 0 },
+            { gameEndTotal: currentGameEnd },
+          ],
           playersInfo: [
             {
               name: state.playersInfo[0].name,
@@ -83,6 +98,7 @@ function game_reducer(state = initialState, action) {
           ],
         };
       }
+      break;
     case "END_GAME":
       return {
         ...(state = initialState),
