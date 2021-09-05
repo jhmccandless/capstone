@@ -1,16 +1,8 @@
-import React from "react";
+import CurrentTotalUI from "../components/CurrentTotalUI";
 import { connect } from "react-redux";
 
-function CurrentTotal({ rollTotal }) {
-  return (
-    <>
-      <div>this is the current total: {rollTotal}</div>
-    </>
-  );
-}
-
 function mapStateToProps(state) {
-  return { rollTotal: state.turnInfo[1].currentTotal };
+  return { rollTotal: state.gameInfo[1].currentTotal };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -20,6 +12,6 @@ function mapDispatchToProps(dispatch) {
 const connectedCurrentTotal = connect(
   mapStateToProps,
   mapDispatchToProps
-)(CurrentTotal);
+)(CurrentTotalUI);
 
 export default connectedCurrentTotal;

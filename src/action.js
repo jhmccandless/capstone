@@ -18,8 +18,8 @@ export function holdCurrentTotalAction(data) {
   };
 }
 
-export function endGameAction() {
+export function resetGameAction() {
   return {
-    type: "END_GAME",
+    type: "RESET_GAME",
   };
 }
