@@ -1,6 +1,6 @@
 import MainGameUI from "../components/MainGameUI";
 import { connect } from "react-redux";
-import { holdCurrentTotalAction, endGameAction } from "../action";
+import { holdCurrentTotalAction, resetGameAction } from "../action";
 
 function mapStateToProps(state) {
   return { currentRollInfo: state };
@@ -11,8 +11,8 @@ function mapDispatchToProps(dispatch) {
     holdCurrentTotal: function (data) {
       dispatch(holdCurrentTotalAction(data));
     },
-    endGameReset: function () {
-      dispatch(endGameAction());
+    resetGameReset: function () {
+      dispatch(resetGameAction());
     },
   };
 }

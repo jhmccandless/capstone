@@ -1,10 +1,12 @@
 import React from "react";
 import "../styling/DiceBox.css";
 
-function DiceRollUI({ diceRoll, diceRollUpdate, diceRollsOne }) {
+function DiceRollUI({ diceRoll, diceRollUpdate, diceRollsOne, isGamePlaying }) {
   function handleClick() {
-    let randomNum = Math.floor(Math.random() * 6) + 1;
-    randomNum === 1 ? diceRollsOne() : diceRollUpdate(randomNum);
+    if (isGamePlaying) {
+      let randomNum = Math.floor(Math.random() * 6) + 1;
+      randomNum === 1 ? diceRollsOne() : diceRollUpdate(randomNum);
+    }
   }
 
   return (
