@@ -27,6 +27,8 @@ function game_reducer(state = initialState, action) {
     case "DICE_ROLL_UPDATE":
       const tempCurrTotal = state.gameInfo[1].currentTotal + action.data;
 
+      console.log(initialState);
+
       return {
         ...state,
         gameInfo: [
@@ -59,10 +61,13 @@ function game_reducer(state = initialState, action) {
         ],
       };
     case "HOLD_CURRENT_TOTAL":
+      // let currentPlayer;
+
+      // action.date[0] === 0 ? currentPlayer = 0 : currentPlayer === 1;
+
       if (action.data[0] === 0) {
         const newPlayerScore = (state.playersInfo[0].score +=
           action.data[1][1].currentTotal);
-        console.log(newPlayerScore, state.gameInfo[2].gameEndTotal);
         if (newPlayerScore >= state.gameInfo[2].gameEndTotal) {
           console.log("game ended");
           return {
@@ -86,32 +91,32 @@ function game_reducer(state = initialState, action) {
               },
             ],
           };
+        } else {
+          return {
+            ...state,
+            gameInfo: [
+              { currentRoll: 0 },
+              { currentTotal: 0 },
+              { gameEndTotal: currentGameEnd },
+              { gamePlaying: isGamePlaying },
+            ],
+            playersInfo: [
+              {
+                name: state.playersInfo[0].name,
+                score: newPlayerScore,
+                isPlaying: state.playersInfo[0].isPlaying ? false : true,
+              },
+              {
+                name: state.playersInfo[1].name,
+                score: state.playersInfo[1].score,
+                isPlaying: state.playersInfo[1].isPlaying ? false : true,
+              },
+            ],
+          };
         }
-        return {
-          ...state,
-          gameInfo: [
-            { currentRoll: 0 },
-            { currentTotal: 0 },
-            { gameEndTotal: currentGameEnd },
-            { gamePlaying: isGamePlaying },
-          ],
-          playersInfo: [
-            {
-              name: state.playersInfo[0].name,
-              score: newPlayerScore,
-              isPlaying: state.playersInfo[0].isPlaying ? false : true,
-            },
-            {
-              name: state.playersInfo[1].name,
-              score: state.playersInfo[1].score,
-              isPlaying: state.playersInfo[1].isPlaying ? false : true,
-            },
-          ],
-        };
       } else if (action.data[0] === 1) {
         const newPlayerScore = (state.playersInfo[1].score +=
           action.data[1][1].currentTotal);
-        console.log(newPlayerScore, state.gameInfo[2].gameEndTotal);
         if (newPlayerScore >= state.gameInfo[2].gameEndTotal) {
           console.log("game ended");
           return {
@@ -135,34 +140,53 @@ function game_reducer(state = initialState, action) {
               },
             ],
           };
+        } else {
+          return {
+            ...state,
+            gameInfo: [
+              { currentRoll: 0 },
+              { currentTotal: 0 },
+              { gameEndTotal: currentGameEnd },
+              { gamePlaying: isGamePlaying },
+            ],
+            playersInfo: [
+              {
+                name: state.playersInfo[0].name,
+                score: state.playersInfo[0].score,
+                isPlaying: state.playersInfo[0].isPlaying ? false : true,
+              },
+              {
+                name: state.playersInfo[1].name,
+                score: newPlayerScore,
+                isPlaying: state.playersInfo[1].isPlaying ? false : true,
+              },
+            ],
+          };
         }
-
-        return {
-          ...state,
-          gameInfo: [
-            { currentRoll: 0 },
-            { currentTotal: 0 },
-            { gameEndTotal: currentGameEnd },
-            { gamePlaying: isGamePlaying },
-          ],
-          playersInfo: [
-            {
-              name: state.playersInfo[0].name,
-              score: state.playersInfo[0].score,
-              isPlaying: state.playersInfo[0].isPlaying ? false : true,
-            },
-            {
-              name: state.playersInfo[1].name,
-              score: newPlayerScore,
-              isPlaying: state.playersInfo[1].isPlaying ? false : true,
-            },
-          ],
-        };
       }
       break;
     case "RESET_GAME":
       return {
-        ...(state = initialState),
+        ...(state = {
+          gameInfo: [
+            { currentRoll: 0 },
+            { currentTotal: 0 },
+            { gameEndTotal: 20 },
+            { gamePlaying: true },
+          ],
+          playersInfo: [
+            {
+              name: "Player 1",
+              score: 0,
+              isPlaying: true,
+            },
+            {
+              name: "Player 2",
+              score: 0,
+              isPlaying: false,
+            },
+          ],
+        }),
       };
     default:
       return state;
