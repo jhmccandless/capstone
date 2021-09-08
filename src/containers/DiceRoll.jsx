@@ -6,6 +6,7 @@ function mapStateToProps(state) {
   return {
     diceRoll: state.diceRoll,
     isGamePlaying: state.gamePlaying,
+    isTwoDiceGame: state.twoDiceGame,
   };
 }
 

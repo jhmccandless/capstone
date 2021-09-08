@@ -24,10 +24,10 @@ function game_reducer(state = initialState, action) {
   const isGamePlaying = state.gamePlaying;
   switch (action.type) {
     case "DICE_ROLL_UPDATE":
-      const tempCurrTotal = state.currentTotal + action.data;
+      // const tempCurrTotal = state.currentTotal + action.data;
       return {
         ...state,
-        currentTotal: tempCurrTotal,
+        diceRoll: action.data,
       };
     case "ONE_ON_DICE":
       return {

@@ -2,7 +2,7 @@ import React from "react";
 import "./styling/App.css";
 import store from "./store";
 import { Provider } from "react-redux";
-import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import MainGame from "./containers/MainGame";
 import HomePageUI from "./components/HomePageUI";
