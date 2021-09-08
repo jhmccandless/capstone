@@ -29,7 +29,6 @@ function MainGameUI({
   ];
 
   function handleHoldClick() {
-    // console.log(combinedInfo);
     if (gamePlaying) {
       diceRollOne();
       holdCurrentTotal(combinedInfo);
