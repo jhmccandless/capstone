@@ -1,9 +1,9 @@
 const initialState = {
   gamePlaying: true,
-  twoDiceGame: false,
+  twoDiceGame: true,
   diceRoll: [0, 0],
   currentTotal: 0,
-  gameEndTotal: 20,
+  gameEndTotal: 10,
   playerInfo: [
     {
       isPlaying: true,
@@ -22,6 +22,7 @@ function game_reducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
     case "DICE_ROLL_UPDATE":
+      console.log("dice roll");
       return {
         ...state,
         diceRoll: action.data,
@@ -33,6 +34,7 @@ function game_reducer(state = initialState, action) {
         currentTotal: tempCurrTotal,
       };
     case "ONE_ON_DICE":
+      console.log("one dice");
       return {
         ...state,
         currentRoll: 0,
@@ -52,13 +54,34 @@ function game_reducer(state = initialState, action) {
         ],
       };
     case "HOLD_CURRENT_TOTAL":
+      const scoreToCheck = state.playerInfo[action.data[1]].score;
+      const possibleWinner = scoreToCheck + action.data[4];
+      console.log(scoreToCheck, possibleWinner);
+      if (possibleWinner >= state.gameEndTotal) {
+        console.log("winner");
+        return {
+          ...state,
+          gamePlaying: false,
+          playerInfo: state.playerInfo.map((player) =>
+            !player.isPlaying
+              ? { ...player, score: (player.score += action.data[4]) }
+              : player
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          playerInfo: state.playerInfo.map((player) =>
+            !player.isPlaying
+              ? { ...player, score: (player.score += action.data[4]) }
+              : player
+          ),
+        };
+      }
+    case "SCORE_REACHED":
       return {
         ...state,
-        playerInfo: state.playerInfo.map((player) =>
-          !player.isPlaying
-            ? { ...player, score: (player.score += action.data[4]) }
-            : player
-        ),
+        gamePlaying: false,
       };
     case "RESET_GAME":
       return {

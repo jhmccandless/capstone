@@ -9,6 +9,7 @@ function DiceRollUI({
   currentTotalUpdate,
   diceRollsOne,
 }) {
+  console.log(diceRoll);
   // generating one dice for the map array if needed
   if (!isTwoDiceGame) {
     diceRoll = [diceRoll[0]];
@@ -20,19 +21,28 @@ function DiceRollUI({
   };
   const newRollArr = [randomNumGen(), randomNumGen()];
 
+  // console.log(newRollArr);
+
   function handleClick() {
-    console.log(newRollArr);
-    if (!isTwoDiceGame && newRollArr[0] === 1) {
-      diceRollsOne();
-    } else if (isTwoDiceGame) {
-      if (newRollArr[0] === 1 && newRollArr[1] === 1) {
+    if (isGamePlaying) {
+      console.log("click");
+      console.log(isTwoDiceGame, newRollArr[0]);
+      // diceRollUpdate(newRollArr);
+      if (!isTwoDiceGame && newRollArr[0] === 1) {
         diceRollsOne();
+        console.log("1");
+      } else if (isTwoDiceGame) {
+        if (newRollArr[0] === 1 && newRollArr[1] === 1) {
+          console.log("2");
+          diceRollsOne();
+        } else {
+          console.log("3");
+          diceRollUpdate(newRollArr);
+          !isTwoDiceGame
+            ? currentTotalUpdate(newRollArr[0])
+            : currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
+        }
       }
-    } else {
-      diceRollUpdate(newRollArr);
-      !isTwoDiceGame
-        ? currentTotalUpdate(newRollArr[0])
-        : currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
     }
   }
 

@@ -14,6 +14,8 @@ function MainGameUI({
   holdCurrentTotal,
   resetGameReset,
   diceRollOne,
+  currentGameTotal,
+  scoreReached,
 }) {
   // getting the current player index#
   let currentPlayer;

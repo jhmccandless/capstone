@@ -4,16 +4,17 @@ import {
   holdCurrentTotalAction,
   resetGameAction,
   diceRollOneAction,
+  scoreReachedAction,
 } from "../action";
 
 function mapStateToProps(state) {
-  console.log(state.currentTotal);
   return {
     gamePlaying: state.gamePlaying,
     dice1Current: state.diceRoll[0],
     dice2Current: state.diceRoll[1],
     currentPlayerInfo: state.playerInfo,
     currentTotal: state.currentTotal,
+    currentGameTotal: state.gameEndTotal,
   };
 }
 
@@ -27,6 +28,9 @@ function mapDispatchToProps(dispatch) {
     },
     diceRollOne: function () {
       dispatch(diceRollOneAction());
+    },
+    scoreReached: function () {
+      dispatch(scoreReachedAction());
     },
   };
 }

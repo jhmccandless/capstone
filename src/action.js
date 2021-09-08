@@ -35,3 +35,9 @@ export function resetGameAction() {
     type: "RESET_GAME",
   };
 }
+
+export function scoreReachedAction() {
+  return {
+    type: "SCORE_REACHED",
+  };
+}
