@@ -10,6 +10,12 @@ export function SecondDiceRollUpdateAction(data) {
     data,
   };
 }
+export function currentTotalUpdateAction(data) {
+  return {
+    type: "CURRENT_TOTAL_UPDATE",
+    data,
+  };
+}
 
 export function diceRollOneAction() {
   return {

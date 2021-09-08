@@ -1,6 +1,10 @@
 import DiceRollUI from "../components/DiceRollUI";
 import { connect } from "react-redux";
-import { diceRollUpdateAction, diceRollOneAction } from "../action.js";
+import {
+  diceRollUpdateAction,
+  diceRollOneAction,
+  currentTotalUpdateAction,
+} from "../action.js";
 
 function mapStateToProps(state) {
   return {
@@ -17,6 +21,9 @@ function mapDispatchToProps(dispatch) {
     },
     diceRollsOne: function () {
       dispatch(diceRollOneAction());
+    },
+    currentTotalUpdate: function (data) {
+      dispatch(currentTotalUpdateAction(data));
     },
   };
 }

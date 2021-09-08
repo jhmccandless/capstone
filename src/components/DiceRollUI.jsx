@@ -6,39 +6,34 @@ function DiceRollUI({
   diceRoll,
   diceRollUpdate,
   isTwoDiceGame,
-  secondDiceRollUpdate,
+  currentTotalUpdate,
   diceRollsOne,
 }) {
-  // generating a random number and assigning to variable
+  // generating one dice for the map array if needed
+  if (!isTwoDiceGame) {
+    diceRoll = [diceRoll[0]];
+  }
+  // generating random numbers and assigning to array
   const randomNumGen = function () {
     let randomNum = Math.floor(Math.random() * 6) + 1;
     return randomNum;
   };
-  let newRollArr = [randomNumGen(), randomNumGen()];
-  console.log(isTwoDiceGame);
-  // making new array to map over to decice between one or two dice
-  let singleRollArr = [];
-  if (isGamePlaying && isTwoDiceGame) {
-    singleRollArr = newRollArr;
-  } else if (isGamePlaying) {
-    singleRollArr.push(diceRoll[0]);
-  }
+  const newRollArr = [randomNumGen(), randomNumGen()];
 
   function handleClick() {
-    diceRollUpdate(newRollArr);
-    // let randomNum;
-    // if (isGamePlaying) {
-    //   randomNum = Math.floor(Math.random() * 6) + 1;
-    //   randomNum === 1 ? diceRollsOne() : diceRollUpdate(randomNum);
-    // }
-    // if (twoDiceRoll) {
-    //   randomNum = Math.floor(Math.random() * 6) + 1;
-    //   let randomNum2 = Math.floor(Math.random() * 6) + 1;
-    //   const twoDiceRollArray = [randomNum, randomNum2];
-    //   randomNum2 || randomNum === 1
-    //     ? diceRollsOne()
-    //     : secondDiceRollUpdate(twoDiceRollArray);
-    // }
+    console.log(newRollArr);
+    if (!isTwoDiceGame && newRollArr[0] === 1) {
+      diceRollsOne();
+    } else if (isTwoDiceGame) {
+      if (newRollArr[0] === 1 && newRollArr[1] === 1) {
+        diceRollsOne();
+      }
+    } else {
+      diceRollUpdate(newRollArr);
+      !isTwoDiceGame
+        ? currentTotalUpdate(newRollArr[0])
+        : currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
+    }
   }
 
   return (
@@ -49,7 +44,7 @@ function DiceRollUI({
           handleClick();
         }}
       >
-        {singleRollArr.map((el, index) => {
+        {diceRoll.map((el, index) => {
           return <div key={index}>this is a dice {el}</div>;
         })}
       </div>
