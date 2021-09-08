@@ -1,62 +1,49 @@
 const initialState = {
-  gameInfo: [
-    { currentRoll: 0 },
-    { currentTotal: 0 },
-    { gameEndTotal: 20 },
-    { gamePlaying: true },
-  ],
-  playersInfo: [
+  gamePlaying: true,
+  twoDiceGame: false,
+  diceRoll: [1, 2],
+  currentTotal: 0,
+  gameEndTotal: 20,
+  playerInfo: [
     {
+      isPlaying: true,
       name: "Player 1",
       score: 0,
-      isPlaying: true,
     },
     {
+      isPlaying: false,
       name: "Player 2",
       score: 0,
-      isPlaying: false,
     },
   ],
 };
 
 function game_reducer(state = initialState, action) {
   console.log(action);
-  const currentGameEnd = state.gameInfo[2].gameEndTotal;
-  const isGamePlaying = state.gameInfo[3].gamePlaying;
+  const currentGameEnd = state.gameEndTotal;
+  const isGamePlaying = state.gamePlaying;
   switch (action.type) {
     case "DICE_ROLL_UPDATE":
-      const tempCurrTotal = state.gameInfo[1].currentTotal + action.data;
-
-      console.log(initialState);
-
+      const tempCurrTotal = state.currentTotal + action.data;
       return {
         ...state,
-        gameInfo: [
-          { currentRoll: action.data },
-          { currentTotal: tempCurrTotal },
-          { gameEndTotal: currentGameEnd },
-          { gamePlaying: isGamePlaying },
-        ],
+        currentTotal: tempCurrTotal,
       };
     case "ONE_ON_DICE":
       return {
         ...state,
-        gameInfo: [
-          { currentRoll: 0 },
-          { currentTotal: 0 },
-          { gameEndTotal: currentGameEnd },
-          { gamePlaying: isGamePlaying },
-        ],
-        playersInfo: [
+        currentRoll: 0,
+        currentTotal: 0,
+        playerInfo: [
           {
-            name: state.playersInfo[0].name,
-            score: state.playersInfo[0].score,
-            isPlaying: state.playersInfo[0].isPlaying ? false : true,
+            name: state.playerInfo[0].name,
+            score: state.playerInfo[0].score,
+            isPlaying: state.playerInfo[0].isPlaying ? false : true,
           },
           {
-            name: state.playersInfo[1].name,
-            score: state.playersInfo[1].score,
-            isPlaying: state.playersInfo[1].isPlaying ? false : true,
+            name: state.playerInfo[1].name,
+            score: state.playerInfo[1].score,
+            isPlaying: state.playerInfo[1].isPlaying ? false : true,
           },
         ],
       };
@@ -66,7 +53,7 @@ function game_reducer(state = initialState, action) {
       // action.date[0] === 0 ? currentPlayer = 0 : currentPlayer === 1;
 
       if (action.data[0] === 0) {
-        const newPlayerScore = (state.playersInfo[0].score +=
+        const newPlayerScore = (state.playerInfo[0].score +=
           action.data[1][1].currentTotal);
         if (newPlayerScore >= state.gameInfo[2].gameEndTotal) {
           console.log("game ended");
@@ -78,15 +65,15 @@ function game_reducer(state = initialState, action) {
               { gameEndTotal: currentGameEnd },
               { gamePlaying: false },
             ],
-            playersInfo: [
+            playerInfo: [
               {
-                name: state.playersInfo[0].name,
+                name: state.playerInfo[0].name,
                 score: newPlayerScore,
                 isPlaying: false,
               },
               {
-                name: state.playersInfo[1].name,
-                score: state.playersInfo[1].score,
+                name: state.playerInfo[1].name,
+                score: state.playerInfo[1].score,
                 isPlaying: false,
               },
             ],
@@ -100,22 +87,22 @@ function game_reducer(state = initialState, action) {
               { gameEndTotal: currentGameEnd },
               { gamePlaying: isGamePlaying },
             ],
-            playersInfo: [
+            playerInfo: [
               {
-                name: state.playersInfo[0].name,
+                name: state.playerInfo[0].name,
                 score: newPlayerScore,
-                isPlaying: state.playersInfo[0].isPlaying ? false : true,
+                isPlaying: state.playerInfo[0].isPlaying ? false : true,
               },
               {
-                name: state.playersInfo[1].name,
-                score: state.playersInfo[1].score,
-                isPlaying: state.playersInfo[1].isPlaying ? false : true,
+                name: state.playerInfo[1].name,
+                score: state.playerInfo[1].score,
+                isPlaying: state.playerInfo[1].isPlaying ? false : true,
               },
             ],
           };
         }
       } else if (action.data[0] === 1) {
-        const newPlayerScore = (state.playersInfo[1].score +=
+        const newPlayerScore = (state.playerInfo[1].score +=
           action.data[1][1].currentTotal);
         if (newPlayerScore >= state.gameInfo[2].gameEndTotal) {
           console.log("game ended");
@@ -127,14 +114,14 @@ function game_reducer(state = initialState, action) {
               { gameEndTotal: currentGameEnd },
               { gamePlaying: false },
             ],
-            playersInfo: [
+            playerInfo: [
               {
-                name: state.playersInfo[0].name,
-                score: state.playersInfo[0].score,
+                name: state.playerInfo[0].name,
+                score: state.playerInfo[0].score,
                 isPlaying: false,
               },
               {
-                name: state.playersInfo[1].name,
+                name: state.playerInfo[1].name,
                 score: newPlayerScore,
                 isPlaying: false,
               },
@@ -149,16 +136,16 @@ function game_reducer(state = initialState, action) {
               { gameEndTotal: currentGameEnd },
               { gamePlaying: isGamePlaying },
             ],
-            playersInfo: [
+            playerInfo: [
               {
-                name: state.playersInfo[0].name,
-                score: state.playersInfo[0].score,
-                isPlaying: state.playersInfo[0].isPlaying ? false : true,
+                name: state.playerInfo[0].name,
+                score: state.playerInfo[0].score,
+                isPlaying: state.playerInfo[0].isPlaying ? false : true,
               },
               {
-                name: state.playersInfo[1].name,
+                name: state.playerInfo[1].name,
                 score: newPlayerScore,
-                isPlaying: state.playersInfo[1].isPlaying ? false : true,
+                isPlaying: state.playerInfo[1].isPlaying ? false : true,
               },
             ],
           };
@@ -174,7 +161,7 @@ function game_reducer(state = initialState, action) {
             { gameEndTotal: 20 },
             { gamePlaying: true },
           ],
-          playersInfo: [
+          playerInfo: [
             {
               name: "Player 1",
               score: 0,

@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { holdCurrentTotalAction, resetGameAction } from "../action";
 
 function mapStateToProps(state) {
-  return { currentRollInfo: state };
+  return {
+    gamePlaying: state.gamePlaying,
+    dice1Current: state.dice1,
+    dice2Current: state.dice2,
+    currentPlayerInfo: state.playerInfo,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

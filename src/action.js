@@ -4,6 +4,12 @@ export function diceRollUpdateAction(data) {
     data,
   };
 }
+export function SecondDiceRollUpdateAction(data) {
+  return {
+    type: "SECOND_DICE_ROLL_UPDATE",
+    data,
+  };
+}
 
 export function diceRollOneAction() {
   return {

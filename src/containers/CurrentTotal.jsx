@@ -2,7 +2,7 @@ import CurrentTotalUI from "../components/CurrentTotalUI";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  return { rollTotal: state.gameInfo[1].currentTotal };
+  return { rollTotal: state.currentTotal };
 }
 
 function mapDispatchToProps(dispatch) {
