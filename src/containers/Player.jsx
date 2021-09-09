@@ -2,7 +2,7 @@ import PlayerUI from "../components/PlayerUI";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  return { playerState: state.playersInfo };
+  return { playerState: state.playerInfo };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -2,7 +2,7 @@ import TotalGoalUI from "../components/TotalGoalUI";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  return { gameTotal: state.gameInfo[2].gameEndTotal };
+  return { gameTotal: state.gameEndTotal };
 }
 
 function mapDispatchToProps(dispatch) {

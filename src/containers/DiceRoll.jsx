@@ -1,11 +1,19 @@
 import DiceRollUI from "../components/DiceRollUI";
 import { connect } from "react-redux";
-import { diceRollUpdateAction, diceRollOneAction } from "../action.js";
+import {
+  diceRollUpdateAction,
+  diceRollOneAction,
+  currentTotalUpdateAction,
+  disableHoldAction,
+  loseScoreAction,
+} from "../action.js";
 
 function mapStateToProps(state) {
   return {
-    diceRoll: state.gameInfo[0].currentRoll,
-    isGamePlaying: state.gameInfo[3].gamePlaying,
+    diceRoll: state.diceRoll,
+    isGamePlaying: state.gamePlaying,
+    isTwoDiceGame: state.twoDiceGame,
+    isBigPigGame: state.bigPigGame,
   };
 }
 
@@ -16,6 +24,15 @@ function mapDispatchToProps(dispatch) {
     },
     diceRollsOne: function () {
       dispatch(diceRollOneAction());
+    },
+    currentTotalUpdate: function (data) {
+      dispatch(currentTotalUpdateAction(data));
+    },
+    disableHold: function () {
+      dispatch(disableHoldAction());
+    },
+    loseScore: function () {
+      dispatch(loseScoreAction());
     },
   };
 }

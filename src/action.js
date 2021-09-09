@@ -4,6 +4,18 @@ export function diceRollUpdateAction(data) {
     data,
   };
 }
+export function SecondDiceRollUpdateAction(data) {
+  return {
+    type: "SECOND_DICE_ROLL_UPDATE",
+    data,
+  };
+}
+export function currentTotalUpdateAction(data) {
+  return {
+    type: "CURRENT_TOTAL_UPDATE",
+    data,
+  };
+}
 
 export function diceRollOneAction() {
   return {
@@ -21,5 +33,21 @@ export function holdCurrentTotalAction(data) {
 export function resetGameAction() {
   return {
     type: "RESET_GAME",
+  };
+}
+
+export function scoreReachedAction() {
+  return {
+    type: "SCORE_REACHED",
+  };
+}
+export function disableHoldAction() {
+  return {
+    type: "DISABLE_HOLD",
+  };
+}
+export function loseScoreAction() {
+  return {
+    type: "LOSE_SCORE",
   };
 }

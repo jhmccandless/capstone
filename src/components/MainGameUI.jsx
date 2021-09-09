@@ -5,18 +5,32 @@ import CurrentTotal from "../containers/CurrentTotal";
 import TotalGoal from "../containers/TotalGoal";
 import ButtonUI from "./ButtonUI";
 
-function MainGameUI({ currentRollInfo, holdCurrentTotal, resetGameReset }) {
+function MainGameUI({
+  dice1Current,
+  dice2Current,
+  currentPlayerInfo,
+  gamePlaying,
+  currentTotal,
+  holdCurrentTotal,
+  resetGameReset,
+  diceRollOne,
+  canHold,
+}) {
   // getting the current player index#
   let currentPlayer;
-  currentRollInfo.playersInfo[0].isPlaying
-    ? (currentPlayer = 0)
-    : (currentPlayer = 1);
-
+  currentPlayerInfo[0].isPlaying ? (currentPlayer = 0) : (currentPlayer = 1);
   // combining currentPlayer with the roll and total info
-  const combinedInfo = [currentPlayer, currentRollInfo.gameInfo];
+  const combinedInfo = [
+    gamePlaying,
+    currentPlayer,
+    dice1Current,
+    dice2Current,
+    currentTotal,
+  ];
 
   function handleHoldClick() {
-    if (currentRollInfo.gameInfo[3].gamePlaying) {
+    if (gamePlaying && canHold) {
+      diceRollOne();
       holdCurrentTotal(combinedInfo);
     }
   }

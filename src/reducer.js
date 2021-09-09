@@ -1,192 +1,104 @@
 const initialState = {
-  gameInfo: [
-    { currentRoll: 0 },
-    { currentTotal: 0 },
-    { gameEndTotal: 20 },
-    { gamePlaying: true },
-  ],
-  playersInfo: [
+  gamePlaying: true,
+  twoDiceGame: true,
+  bigPigGame: false,
+  diceRoll: [0, 0],
+  currentTotal: 0,
+  canHoldCurrentTotal: true,
+  gameEndTotal: 20,
+  playerInfo: [
     {
+      isPlaying: true,
       name: "Player 1",
       score: 0,
-      isPlaying: true,
     },
     {
+      isPlaying: false,
       name: "Player 2",
       score: 0,
-      isPlaying: false,
     },
   ],
 };
 
 function game_reducer(state = initialState, action) {
   console.log(action);
-  const currentGameEnd = state.gameInfo[2].gameEndTotal;
-  const isGamePlaying = state.gameInfo[3].gamePlaying;
   switch (action.type) {
     case "DICE_ROLL_UPDATE":
-      const tempCurrTotal = state.gameInfo[1].currentTotal + action.data;
-
-      console.log(initialState);
-
       return {
         ...state,
-        gameInfo: [
-          { currentRoll: action.data },
-          { currentTotal: tempCurrTotal },
-          { gameEndTotal: currentGameEnd },
-          { gamePlaying: isGamePlaying },
-        ],
+        diceRoll: action.data,
+        canHoldCurrentTotal: true,
+      };
+    case "CURRENT_TOTAL_UPDATE":
+      const tempCurrTotal = state.currentTotal + action.data;
+      return {
+        ...state,
+        currentTotal: tempCurrTotal,
       };
     case "ONE_ON_DICE":
       return {
         ...state,
-        gameInfo: [
-          { currentRoll: 0 },
-          { currentTotal: 0 },
-          { gameEndTotal: currentGameEnd },
-          { gamePlaying: isGamePlaying },
-        ],
-        playersInfo: [
+        currentRoll: 0,
+        currentTotal: 0,
+        diceRoll: [0, 0],
+        playerInfo: [
           {
-            name: state.playersInfo[0].name,
-            score: state.playersInfo[0].score,
-            isPlaying: state.playersInfo[0].isPlaying ? false : true,
+            name: state.playerInfo[0].name,
+            score: state.playerInfo[0].score,
+            isPlaying: state.playerInfo[0].isPlaying ? false : true,
           },
           {
-            name: state.playersInfo[1].name,
-            score: state.playersInfo[1].score,
-            isPlaying: state.playersInfo[1].isPlaying ? false : true,
+            name: state.playerInfo[1].name,
+            score: state.playerInfo[1].score,
+            isPlaying: state.playerInfo[1].isPlaying ? false : true,
           },
         ],
       };
     case "HOLD_CURRENT_TOTAL":
-      // let currentPlayer;
-
-      // action.date[0] === 0 ? currentPlayer = 0 : currentPlayer === 1;
-
-      if (action.data[0] === 0) {
-        const newPlayerScore = (state.playersInfo[0].score +=
-          action.data[1][1].currentTotal);
-        if (newPlayerScore >= state.gameInfo[2].gameEndTotal) {
-          console.log("game ended");
-          return {
-            ...state,
-            gameInfo: [
-              { currentRoll: 0 },
-              { currentTotal: 0 },
-              { gameEndTotal: currentGameEnd },
-              { gamePlaying: false },
-            ],
-            playersInfo: [
-              {
-                name: state.playersInfo[0].name,
-                score: newPlayerScore,
-                isPlaying: false,
-              },
-              {
-                name: state.playersInfo[1].name,
-                score: state.playersInfo[1].score,
-                isPlaying: false,
-              },
-            ],
-          };
-        } else {
-          return {
-            ...state,
-            gameInfo: [
-              { currentRoll: 0 },
-              { currentTotal: 0 },
-              { gameEndTotal: currentGameEnd },
-              { gamePlaying: isGamePlaying },
-            ],
-            playersInfo: [
-              {
-                name: state.playersInfo[0].name,
-                score: newPlayerScore,
-                isPlaying: state.playersInfo[0].isPlaying ? false : true,
-              },
-              {
-                name: state.playersInfo[1].name,
-                score: state.playersInfo[1].score,
-                isPlaying: state.playersInfo[1].isPlaying ? false : true,
-              },
-            ],
-          };
-        }
-      } else if (action.data[0] === 1) {
-        const newPlayerScore = (state.playersInfo[1].score +=
-          action.data[1][1].currentTotal);
-        if (newPlayerScore >= state.gameInfo[2].gameEndTotal) {
-          console.log("game ended");
-          return {
-            ...state,
-            gameInfo: [
-              { currentRoll: 0 },
-              { currentTotal: 0 },
-              { gameEndTotal: currentGameEnd },
-              { gamePlaying: false },
-            ],
-            playersInfo: [
-              {
-                name: state.playersInfo[0].name,
-                score: state.playersInfo[0].score,
-                isPlaying: false,
-              },
-              {
-                name: state.playersInfo[1].name,
-                score: newPlayerScore,
-                isPlaying: false,
-              },
-            ],
-          };
-        } else {
-          return {
-            ...state,
-            gameInfo: [
-              { currentRoll: 0 },
-              { currentTotal: 0 },
-              { gameEndTotal: currentGameEnd },
-              { gamePlaying: isGamePlaying },
-            ],
-            playersInfo: [
-              {
-                name: state.playersInfo[0].name,
-                score: state.playersInfo[0].score,
-                isPlaying: state.playersInfo[0].isPlaying ? false : true,
-              },
-              {
-                name: state.playersInfo[1].name,
-                score: newPlayerScore,
-                isPlaying: state.playersInfo[1].isPlaying ? false : true,
-              },
-            ],
-          };
-        }
+      const scoreToCheck = state.playerInfo[action.data[1]].score;
+      const possibleWinner = scoreToCheck + action.data[4];
+      console.log(scoreToCheck, possibleWinner);
+      if (possibleWinner >= state.gameEndTotal) {
+        console.log("winner");
+        return {
+          ...state,
+          gamePlaying: false,
+          playerInfo: state.playerInfo.map((player) =>
+            !player.isPlaying
+              ? { ...player, score: (player.score += action.data[4]) }
+              : player
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          playerInfo: state.playerInfo.map((player) =>
+            !player.isPlaying
+              ? { ...player, score: (player.score += action.data[4]) }
+              : player
+          ),
+        };
       }
-      break;
+    case "LOSE_SCORE":
+      return {
+        ...state,
+        playerInfo: state.playerInfo.map((player) =>
+          player.isPlaying ? { ...player, score: 0 } : player
+        ),
+      };
+    case "DISABLE_HOLD":
+      return {
+        ...state,
+        canHoldCurrentTotal: false,
+      };
+    case "SCORE_REACHED":
+      return {
+        ...state,
+        gamePlaying: false,
+      };
     case "RESET_GAME":
       return {
-        ...(state = {
-          gameInfo: [
-            { currentRoll: 0 },
-            { currentTotal: 0 },
-            { gameEndTotal: 20 },
-            { gamePlaying: true },
-          ],
-          playersInfo: [
-            {
-              name: "Player 1",
-              score: 0,
-              isPlaying: true,
-            },
-            {
-              name: "Player 2",
-              score: 0,
-              isPlaying: false,
-            },
-          ],
-        }),
+        ...(state = initialState),
       };
     default:
       return state;
