@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function NewGameParamsUI({ gameParameters }) {
-  const [selectedOption, setSelectedOption] = useState("standard");
+  let history = useHistory();
 
-  // console.log(selectedOption);
+  const [selectedOption, setSelectedOption] = useState("standard");
 
   function handleChange(event) {
     console.log("changed evnet");
@@ -13,17 +14,14 @@ function NewGameParamsUI({ gameParameters }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log("click");
     let gamePlayDetails = [];
-    console.log(event.target[0].value);
-    console.log(event.target[1].value);
-    console.log(event.target[2].value);
-    console.log(selectedOption);
-    console.log(gamePlayDetails);
-    // gameParameters();
-
-    // console.log("submitted");
-    // console.log(event.target.value);
-    // alert("slow down page reload");
+    for (let i = 0; i < 3; i++) {
+      gamePlayDetails.push(event.target[i].value);
+    }
+    gamePlayDetails.push(selectedOption);
+    gameParameters(gamePlayDetails);
+    history.push("/current_game");
   }
 
   return (
@@ -39,13 +37,6 @@ function NewGameParamsUI({ gameParameters }) {
           <br />
           <label htmlFor="max_score">Score Goal:</label>
           <input type="number" name="max_score" defaultValue="100"></input>
-          {/* <br />
-          <input type="radio" id="standard" name="game-type" defaultChecked />
-          <label htmlFor="standard">Standard</label>
-          <input type="radio" id="two-dice" name="game-type" />
-          <label htmlFor="two-dice">Two-Dice Pig</label>
-          <input type="radio" id="big-pig" name="game-type" />
-          <label htmlFor="big-pig">Big Pig</label> */}
           <br />
           <label>
             <input
@@ -56,7 +47,6 @@ function NewGameParamsUI({ gameParameters }) {
             />
             Standard
           </label>
-
           <label>
             <input
               type="radio"
@@ -66,7 +56,6 @@ function NewGameParamsUI({ gameParameters }) {
             />
             Two-Dice Pig
           </label>
-
           <label>
             <input
               type="radio"
@@ -76,7 +65,6 @@ function NewGameParamsUI({ gameParameters }) {
             />
             Big Pig
           </label>
-
           <br />
           <button type="submit">Let's Play!</button>
         </form>

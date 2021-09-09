@@ -24,8 +24,27 @@ function game_reducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
     case "GAME_PARAMETERS":
+      console.log(action.data);
       return {
         ...state,
+        twoDiceGame:
+          action.data[3] === "two-dice" || action.data[3] === "big-pig"
+            ? true
+            : false,
+        bigPigGame: action.data[3] === "big-pig" ? true : false,
+        gameEndTotal: action.data[2],
+        playerInfo: [
+          {
+            name: action.data[0],
+            score: 0,
+            isPlaying: true,
+          },
+          {
+            name: action.data[1],
+            score: 0,
+            isPlaying: false,
+          },
+        ],
       };
     case "DICE_ROLL_UPDATE":
       return {
