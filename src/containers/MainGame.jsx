@@ -15,6 +15,7 @@ function mapStateToProps(state) {
     currentPlayerInfo: state.playerInfo,
     currentTotal: state.currentTotal,
     currentGameTotal: state.gameEndTotal,
+    canHold: state.canHoldCurrentTotal,
   };
 }
 

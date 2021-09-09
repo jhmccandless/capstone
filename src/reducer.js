@@ -1,9 +1,11 @@
 const initialState = {
   gamePlaying: true,
-  twoDiceGame: true,
+  twoDiceGame: false,
+  bigPigGame: false,
   diceRoll: [0, 0],
   currentTotal: 0,
-  gameEndTotal: 10,
+  canHoldCurrentTotal: true,
+  gameEndTotal: 20,
   playerInfo: [
     {
       isPlaying: true,
@@ -22,10 +24,10 @@ function game_reducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
     case "DICE_ROLL_UPDATE":
-      console.log("dice roll");
       return {
         ...state,
         diceRoll: action.data,
+        canHoldCurrentTotal: true,
       };
     case "CURRENT_TOTAL_UPDATE":
       const tempCurrTotal = state.currentTotal + action.data;
@@ -34,7 +36,6 @@ function game_reducer(state = initialState, action) {
         currentTotal: tempCurrTotal,
       };
     case "ONE_ON_DICE":
-      console.log("one dice");
       return {
         ...state,
         currentRoll: 0,
@@ -78,6 +79,18 @@ function game_reducer(state = initialState, action) {
           ),
         };
       }
+    case "LOSE_SCORE":
+      return {
+        ...state,
+        playerInfo: state.playerInfo.map((player) =>
+          player.isPlaying ? { ...player, score: 0 } : player
+        ),
+      };
+    case "DISABLE_HOLD":
+      return {
+        ...state,
+        canHoldCurrentTotal: false,
+      };
     case "SCORE_REACHED":
       return {
         ...state,

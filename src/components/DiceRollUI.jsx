@@ -8,8 +8,10 @@ function DiceRollUI({
   isTwoDiceGame,
   currentTotalUpdate,
   diceRollsOne,
+  isBigPigGame,
+  disableHold,
+  loseScore,
 }) {
-  console.log(diceRoll);
   // generating one dice for the map array if needed
   if (!isTwoDiceGame) {
     diceRoll = [diceRoll[0]];
@@ -21,27 +23,34 @@ function DiceRollUI({
   };
   const newRollArr = [randomNumGen(), randomNumGen()];
 
-  // console.log(newRollArr);
-
   function handleClick() {
     if (isGamePlaying) {
-      console.log("click");
-      console.log(isTwoDiceGame, newRollArr[0]);
-      // diceRollUpdate(newRollArr);
       if (!isTwoDiceGame && newRollArr[0] === 1) {
+        // standard game with one rolled
         diceRollsOne();
-        console.log("1");
       } else if (isTwoDiceGame) {
+        // two dice game scope
         if (newRollArr[0] === 1 && newRollArr[1] === 1) {
-          console.log("2");
-          diceRollsOne();
-        } else {
-          console.log("3");
-          diceRollUpdate(newRollArr);
-          !isTwoDiceGame
-            ? currentTotalUpdate(newRollArr[0])
-            : currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
+          loseScore();
         }
+        if (newRollArr[0] === 1 || newRollArr[1] === 1) {
+          diceRollsOne();
+        } else if (newRollArr[0] === newRollArr[1]) {
+          console.log(newRollArr[0], newRollArr[1]);
+          diceRollUpdate(newRollArr);
+          currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
+          disableHold();
+        } else {
+          // two dice reg roll
+          diceRollUpdate(newRollArr);
+          currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
+        }
+      } else if (isBigPigGame) {
+        console.log("big pig");
+      } else {
+        // standard game reg roll
+        diceRollUpdate(newRollArr);
+        currentTotalUpdate(newRollArr[0]);
       }
     }
   }

@@ -41,3 +41,13 @@ export function scoreReachedAction() {
     type: "SCORE_REACHED",
   };
 }
+export function disableHoldAction() {
+  return {
+    type: "DISABLE_HOLD",
+  };
+}
+export function loseScoreAction() {
+  return {
+    type: "LOSE_SCORE",
+  };
+}

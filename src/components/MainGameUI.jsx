@@ -14,13 +14,11 @@ function MainGameUI({
   holdCurrentTotal,
   resetGameReset,
   diceRollOne,
-  currentGameTotal,
-  scoreReached,
+  canHold,
 }) {
   // getting the current player index#
   let currentPlayer;
   currentPlayerInfo[0].isPlaying ? (currentPlayer = 0) : (currentPlayer = 1);
-
   // combining currentPlayer with the roll and total info
   const combinedInfo = [
     gamePlaying,
@@ -31,7 +29,7 @@ function MainGameUI({
   ];
 
   function handleHoldClick() {
-    if (gamePlaying) {
+    if (gamePlaying && canHold) {
       diceRollOne();
       holdCurrentTotal(combinedInfo);
     }

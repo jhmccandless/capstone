@@ -4,6 +4,8 @@ import {
   diceRollUpdateAction,
   diceRollOneAction,
   currentTotalUpdateAction,
+  disableHoldAction,
+  loseScoreAction,
 } from "../action.js";
 
 function mapStateToProps(state) {
@@ -11,6 +13,7 @@ function mapStateToProps(state) {
     diceRoll: state.diceRoll,
     isGamePlaying: state.gamePlaying,
     isTwoDiceGame: state.twoDiceGame,
+    isBigPigGame: state.bigPigGame,
   };
 }
 
@@ -24,6 +27,12 @@ function mapDispatchToProps(dispatch) {
     },
     currentTotalUpdate: function (data) {
       dispatch(currentTotalUpdateAction(data));
+    },
+    disableHold: function () {
+      dispatch(disableHoldAction());
+    },
+    loseScore: function () {
+      dispatch(loseScoreAction());
     },
   };
 }
