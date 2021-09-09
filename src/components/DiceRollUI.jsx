@@ -21,51 +21,52 @@ function DiceRollUI({
     let randomNum = Math.floor(Math.random() * 6) + 1;
     return randomNum;
   };
+
+  // generating the roll to be displayed upon click
   const newRollArr = [randomNumGen(), randomNumGen()];
 
   function handleClick() {
     if (isGamePlaying) {
-      if (!isTwoDiceGame && newRollArr[0] === 1) {
-        // standard game with one rolled
-        diceRollsOne();
-      } else if (isTwoDiceGame && !isBigPigGame) {
-        // two dice game scope
-        if (newRollArr[0] === 1 && newRollArr[1] === 1) {
-          loseScore();
-        }
-        if (newRollArr[0] === 1 || newRollArr[1] === 1) {
-          diceRollsOne();
-        } else if (newRollArr[0] === newRollArr[1]) {
-          diceRollUpdate(newRollArr);
-          currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
-          disableHold();
-        } else {
-          // two dice reg roll
-          diceRollUpdate(newRollArr);
-          currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
-        }
-      } else if (isTwoDiceGame && isBigPigGame) {
-        if (newRollArr[0] === 1 || newRollArr[1] === 1) {
-          if (newRollArr[0] === 1 && newRollArr[1] === 1) {
-            diceRollUpdate(newRollArr);
-            currentTotalUpdate(25);
-            disableHold();
+      diceRollUpdate(newRollArr);
+      if (isTwoDiceGame) {
+        // two dice game/big pig scope
+        if (newRollArr[0] === newRollArr[1]) {
+          // double rolled two dice/big pig
+          if (newRollArr[0] === 1) {
+            // double one rolled two dice/big pig
+            if (isBigPigGame) {
+              // double one big pig ONLY
+              currentTotalUpdate(25);
+              disableHold();
+            } else {
+              // double one two dice ONLY
+              loseScore();
+              diceRollsOne();
+            }
           } else {
-            diceRollsOne();
+            // non one double two dice/big pig
+            disableHold();
+            if (isBigPigGame) {
+              // non one double big pig ONLY
+              const doubleDiceRoll = 2 * newRollArr.reduce((a, b) => a + b, 0);
+              currentTotalUpdate(doubleDiceRoll);
+            } else {
+              // non one double two dice ONLY
+              currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
+            }
           }
-        } else if (newRollArr[0] === newRollArr[1]) {
-          const doubleDiceRoll = 2 * newRollArr.reduce((a, b) => a + b, 0);
-          diceRollUpdate(newRollArr);
-          currentTotalUpdate(doubleDiceRoll);
-          disableHold();
+        } else if (newRollArr[0] === 1 || newRollArr[1] === 1) {
+          // either dice is a one two dice/big pig
+          diceRollsOne();
         } else {
-          // two dice reg roll
-          diceRollUpdate(newRollArr);
+          // regular non double roll two dice/big pig
           currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
         }
+      } else if (newRollArr[0] === 1) {
+        // roll one standard pig
+        diceRollsOne();
       } else {
-        // standard game reg roll
-        diceRollUpdate(newRollArr);
+        // reg roll standard pig
         currentTotalUpdate(newRollArr[0]);
       }
     }

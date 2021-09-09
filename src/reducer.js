@@ -1,6 +1,6 @@
 const initialState = {
   gamePlaying: true,
-  twoDiceGame: true,
+  twoDiceGame: false,
   bigPigGame: false,
   diceRoll: [0, 0],
   currentTotal: 0,
@@ -23,6 +23,10 @@ const initialState = {
 function game_reducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
+    case "GAME_PARAMETERS":
+      return {
+        ...state,
+      };
     case "DICE_ROLL_UPDATE":
       return {
         ...state,
