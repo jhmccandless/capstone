@@ -2,7 +2,7 @@ import React from "react";
 import "./styling/App.css";
 import store from "./store";
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
 
 import MainGame from "./containers/MainGame";
 import HomePageUI from "./components/HomePageUI";
@@ -15,7 +15,12 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <div className="App">
-          <header className="App-header"></header>
+          <header className="App-header">
+            <Link to="/homepage">Home</Link>
+            <Link to="/new_game_setup">New Game</Link>
+            <Link to="/game_rules">Game Rules</Link>
+            <Link to="/scoreboard">Scoreboard</Link>
+          </header>
           <Switch>
             <Route exact path="/homepage" component={HomePageUI} />
             <Route path="/new_game_setup" component={NewGameParams} />

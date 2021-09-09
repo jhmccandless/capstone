@@ -1,5 +1,5 @@
 const initialState = {
-  gamePlaying: true,
+  gamePlaying: false,
   twoDiceGame: false,
   bigPigGame: false,
   diceRoll: [0, 0],
@@ -24,9 +24,9 @@ function game_reducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
     case "GAME_PARAMETERS":
-      console.log(action.data);
       return {
         ...state,
+        gamePlaying: true,
         twoDiceGame:
           action.data[3] === "two-dice" || action.data[3] === "big-pig"
             ? true
@@ -80,7 +80,6 @@ function game_reducer(state = initialState, action) {
     case "HOLD_CURRENT_TOTAL":
       const scoreToCheck = state.playerInfo[action.data[1]].score;
       const possibleWinner = scoreToCheck + action.data[4];
-      console.log(scoreToCheck, possibleWinner);
       if (possibleWinner >= state.gameEndTotal) {
         console.log("winner");
         return {
