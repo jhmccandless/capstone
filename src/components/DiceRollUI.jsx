@@ -28,7 +28,7 @@ function DiceRollUI({
       if (!isTwoDiceGame && newRollArr[0] === 1) {
         // standard game with one rolled
         diceRollsOne();
-      } else if (isTwoDiceGame) {
+      } else if (isTwoDiceGame && !isBigPigGame) {
         // two dice game scope
         if (newRollArr[0] === 1 && newRollArr[1] === 1) {
           loseScore();
@@ -36,7 +36,6 @@ function DiceRollUI({
         if (newRollArr[0] === 1 || newRollArr[1] === 1) {
           diceRollsOne();
         } else if (newRollArr[0] === newRollArr[1]) {
-          console.log(newRollArr[0], newRollArr[1]);
           diceRollUpdate(newRollArr);
           currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
           disableHold();
@@ -45,8 +44,25 @@ function DiceRollUI({
           diceRollUpdate(newRollArr);
           currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
         }
-      } else if (isBigPigGame) {
-        console.log("big pig");
+      } else if (isTwoDiceGame && isBigPigGame) {
+        if (newRollArr[0] === 1 || newRollArr[1] === 1) {
+          if (newRollArr[0] === 1 && newRollArr[1] === 1) {
+            diceRollUpdate(newRollArr);
+            currentTotalUpdate(25);
+            disableHold();
+          } else {
+            diceRollsOne();
+          }
+        } else if (newRollArr[0] === newRollArr[1]) {
+          const doubleDiceRoll = 2 * newRollArr.reduce((a, b) => a + b, 0);
+          diceRollUpdate(newRollArr);
+          currentTotalUpdate(doubleDiceRoll);
+          disableHold();
+        } else {
+          // two dice reg roll
+          diceRollUpdate(newRollArr);
+          currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
+        }
       } else {
         // standard game reg roll
         diceRollUpdate(newRollArr);

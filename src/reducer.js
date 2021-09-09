@@ -1,6 +1,6 @@
 const initialState = {
   gamePlaying: true,
-  twoDiceGame: false,
+  twoDiceGame: true,
   bigPigGame: false,
   diceRoll: [0, 0],
   currentTotal: 0,
