@@ -51,3 +51,10 @@ export function loseScoreAction() {
     type: "LOSE_SCORE",
   };
 }
+
+export function gameParametersAction(data) {
+  return {
+    type: "GAME_PARAMETERS",
+    data,
+  };
+}
