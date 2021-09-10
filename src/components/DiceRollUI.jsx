@@ -25,10 +25,12 @@ function DiceRollUI({
   // generating the roll to be displayed upon click
   const newRollArr = [randomNumGen(), randomNumGen()];
 
+  // make a if not playing logic--
   function handleClick() {
     if (isGamePlaying) {
       diceRollUpdate(newRollArr);
       if (isTwoDiceGame) {
+        //// combine is two game and big pig game
         // two dice game/big pig scope
         if (newRollArr[0] === newRollArr[1]) {
           // double rolled two dice/big pig
@@ -69,6 +71,8 @@ function DiceRollUI({
         // reg roll standard pig
         currentTotalUpdate(newRollArr[0]);
       }
+    } else {
+      // return null if not playing
     }
   }
 

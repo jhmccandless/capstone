@@ -21,7 +21,7 @@ const initialState = {
 };
 
 function game_reducer(state = initialState, action) {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case "GAME_PARAMETERS":
       return {
@@ -119,8 +119,22 @@ function game_reducer(state = initialState, action) {
         gamePlaying: false,
       };
     case "RESET_GAME":
+      const player1Same = state.playerInfo[0].name;
+      const player2Same = state.playerInfo[1].name;
       return {
-        ...(state = initialState),
+        ...state,
+        playerInfo: [
+          {
+            isPlaying: true,
+            name: player1Same,
+            score: 0,
+          },
+          {
+            isPlaying: false,
+            name: player2Same,
+            score: 0,
+          },
+        ],
       };
     default:
       return state;
