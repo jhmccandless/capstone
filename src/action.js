@@ -58,3 +58,10 @@ export function gameParametersAction(data) {
     data,
   };
 }
+
+export function fetchDataAction(data) {
+  return {
+    type: "FETCH_DATA",
+    data,
+  };
+}
