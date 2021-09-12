@@ -15,11 +15,10 @@ app.get("/", async (req, res) => {
   res.send(results);
 });
 
-// app.post("/scores", (req, res) => {
-//   console.log(req);
-//   let results = await db.query(`SELECT * FROM scores`);
-//   console.log(results);
-// });
+app.post("/scores", (req, res) => {
+  let newScoreInfo = req.body;
+  console.log(req.body);
+});
 
 // const PORT = process.env.PORT || 3785;
 const PORT = 3785;

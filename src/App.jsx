@@ -9,6 +9,7 @@ import HomePageUI from "./components/HomePageUI";
 import NewGameParams from "./containers/NewGameParams";
 import GameRulesUI from "./components/GameRulesUI";
 import ScoreboardUI from "./components/ScorboardUI";
+import PostGame from "./containers/PostGame";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/current_game" component={MainGame} />
             <Route path="/game_rules" component={GameRulesUI} />
             <Route path="/scoreboard" component={ScoreboardUI} />
+            <Route path="/post_game" component={PostGame} />
             <Route path="*">
               <Redirect to="/homepage" />
             </Route>

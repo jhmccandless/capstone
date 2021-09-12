@@ -123,6 +123,9 @@ function game_reducer(state = initialState, action) {
       const player2Same = state.playerInfo[1].name;
       return {
         ...state,
+        gamePlaying: true,
+        diceRoll: [0, 0],
+        currentTotal: 0,
         playerInfo: [
           {
             isPlaying: true,

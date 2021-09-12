@@ -48,7 +48,7 @@ function MainGameUI({
   return (
     <>
       {!gamePlaying ? (
-        <Redirect to="/new_game_setup" />
+        <Redirect to="/post_game" />
       ) : (
         <div>
           <h2>this is the main game page</h2>
