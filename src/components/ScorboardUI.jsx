@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 function ScoreboardUI() {
-  const [scores, setScores] = useState("");
+  // const [scores, setScores] = useState("");
 
-  fetch("http://localhost:3785/")
-    .then((res) => res.json())
-    .then((res) => console.log(res));
+  function gettingData() {
+    fetch("http://localhost:3785/")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }
+
+  gettingData();
 
   return (
     <>
