@@ -1,10 +1,7 @@
 import React from "react";
-import DiceRoll from "../containers/DiceRoll";
-import Player from "../containers/Player";
-import CurrentTotal from "../containers/CurrentTotal";
 import TotalGoal from "../containers/TotalGoal";
 import ButtonUI from "./ButtonUI";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 
 function PostGameUI({
@@ -18,8 +15,9 @@ function PostGameUI({
   diceRollOne,
   canHold,
   currentGameTotal,
+  state,
 }) {
-  let gameWinnerInfo, gameLoserInfo;
+  let gameWinnerInfo, gameLoserInfo, gameType;
   console.log(currentPlayerInfo[0].score > currentPlayerInfo[1].score);
   if (currentPlayerInfo[0].score > currentPlayerInfo[1].score) {
     console.log("0 is the winner");
@@ -31,6 +29,14 @@ function PostGameUI({
     gameLoserInfo = currentPlayerInfo[0];
   }
 
+  if (state.bigPigGame && state.twoDiceGame) {
+    gameType = "big_pig";
+  } else if (state.twoDiceGame) {
+    gameType = "two_dice";
+  } else {
+    gameType = "standard";
+  }
+
   function postScores() {
     return fetch("http://localhost:3785/scores_db", {
       method: "POST",
@@ -38,31 +44,13 @@ function PostGameUI({
         winner: gameWinnerInfo,
         loser: gameLoserInfo,
         gameEndTotal: currentGameTotal,
+        gameType: gameType,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     }).then((req) => req.json());
-    // .then((data) => console.log(data));
   }
-
-  // useEffect(() => {
-  //   let mounted = true;
-  //   gettingData().then((scores) => {
-  //     if (mounted) {
-  //       setScores(scores);
-  //     }
-  //   });
-  //   return () => (mounted = false);
-  // }, []);
-
-  // currentPlayerInfo[0].score > currentPlayerInfo[1].score
-  //   ? (gameWinnerInfo = currentPlayerInfo[0])
-  //   : (gameWinnerInfo = currentPlayerInfo[1]);
-
-  // gameWinnerInfo = currentPlayerInfo[0]
-  //   ? (gameLoserInfo = currentPlayerInfo[1])
-  //   : (currentPlayerInfo = [0]);
 
   /*
   need to know:
@@ -80,24 +68,16 @@ function PostGameUI({
   
   */
   let history = useHistory();
-  // getting the current player index#
-  // let currentPlayer;
-  // currentPlayerInfo[0].isPlaying ? (currentPlayer = 0) : (currentPlayer = 1);
-  // combining currentPlayer with the roll and total info
-  // const combinedInfo = [
-  //   gamePlaying,
-  //   // currentPlayer,
-  //   dice1Current,
-  //   dice2Current,
-  //   currentTotal,
-  // ];
 
-  // function handleHoldClick() {
-  //   if (gamePlaying && canHold) {
-  //     diceRollOne();
-  //     holdCurrentTotal(combinedInfo);
-  //   }
-  // }
+  useEffect(() => {
+    let mounted = true;
+    postScores().then(() => {
+      if (mounted) {
+        postScores();
+      }
+    });
+    return () => (mounted = false);
+  });
 
   function handleResetClick() {
     resetGameReset();
@@ -108,10 +88,10 @@ function PostGameUI({
     history.push("/new_game_setup");
   }
 
-  function testingAPIPost() {
-    console.log("testing post");
-    postScores();
-  }
+  // function testingAPIPost() {
+  //   console.log("testing post");
+  //   postScores();
+  // }
 
   return (
     <>
@@ -143,12 +123,12 @@ function PostGameUI({
             wholeNewGame();
           }}
         />
-        <ButtonUI
+        {/* <ButtonUI
           name="trial button"
           handleDesiredClick={() => {
             testingAPIPost();
           }}
-        />
+        /> */}
       </div>
     </>
   );

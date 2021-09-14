@@ -16,9 +16,35 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/scores_db", async (req, res) => {
-  // let newScoreInfo = req.body;
-  console.log("inside post");
-  console.log(req.body);
+  const gameEndInfo = req.body;
+  let winner, loser, winnerScore, loserScore, gameType, gameEndScore, date;
+  winner = gameEndInfo.winner.name;
+  winnerScore = gameEndInfo.winner.score;
+  loser = gameEndInfo.loser.name;
+  loserScore = gameEndInfo.loser.score;
+  gameType = gameEndInfo.gameType;
+  gameEndScore = gameEndInfo.gameEndTotal;
+  date = new Date().toISOString().slice(0, 19).replace("T", " ");
+  db.none(
+    `INSERT INTO scores (username, did_win, own_score, opponent_score, created_on, game_type, game_goal)
+VALUES ('${winner}',
+  'true',
+  '${winnerScore}',
+  '${loserScore}',
+  '${date}',
+  '${gameType}',
+  '${gameEndScore}')`
+  );
+  db.none(
+    `INSERT INTO scores (username, did_win, own_score, opponent_score, created_on, game_type, game_goal)
+VALUES ('${loser}',
+  'false',
+  '${loserScore}',
+  '${winnerScore}',
+  '${date}',
+  '${gameType}',
+  '${gameEndScore}')`
+  );
 });
 
 // const PORT = process.env.PORT || 3785;
