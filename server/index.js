@@ -37,8 +37,6 @@ app.post("/scores_db", async (req, res) => {
   percentageWin = (winnerScore - loserScore) / winnerScore;
   percentageWinNeg = (-1 * (winnerScore - loserScore)) / winnerScore;
   date = new Date().toISOString().slice(0, 19).replace("T", " ");
-  console.log(percentageWin);
-  console.log(percentageWinNeg);
   db.none(
     `INSERT INTO scores (username, did_win, created_on, game_type, own_score, opponent_score, game_goal, percentage)
 VALUES ('${winner}',

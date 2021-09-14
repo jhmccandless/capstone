@@ -1,0 +1,14 @@
+.single-player-div {
+  display: flex;
+  flex-direction: column;
+  border: solid black;
+  align-content: center;
+  justify-content: center;
+  height: 200px;
+  width: 150px;
+  margin: 20px;
+}
+
+.isTurn {
+  background-color: lightpink;
+}

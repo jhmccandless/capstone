@@ -26,8 +26,8 @@ function ScoreboardUI() {
       <ul>
         {scores.map((scores, index) => (
           <li key={index}>
-            {scores.username} score: {scores.own_score} percentage:{" "}
-            {scores.percentage}
+            {scores.username} Type: {scores.game_type} score: {scores.own_score}{" "}
+            percentage: {scores.percentage}
           </li>
         ))}
       </ul>

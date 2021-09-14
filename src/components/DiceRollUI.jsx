@@ -85,7 +85,11 @@ function DiceRollUI({
         }}
       >
         {diceRoll.map((el, index) => {
-          return <div key={index}>this is a dice {el}</div>;
+          return (
+            <div className="single_dice" key={index}>
+              <p>{el}</p>
+            </div>
+          );
         })}
       </div>
     </>

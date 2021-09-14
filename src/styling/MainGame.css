@@ -1,4 +1,10 @@
-.wrapper {
+.main_game_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-wrapper {
   display: flex;
   border-style: solid;
   border-color: black;
@@ -6,11 +12,5 @@
   align-items: center;
   justify-items: center;
   width: min-content;
-}
-
-.single_dice {
-  border: solid black;
-  margin: 20px;
-  height: 70px;
-  width: 70px;
+  height: inherit;
 }

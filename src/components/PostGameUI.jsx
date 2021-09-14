@@ -69,15 +69,15 @@ function PostGameUI({
   */
   let history = useHistory();
 
-  useEffect(() => {
-    let mounted = true;
-    postScores().then(() => {
-      if (mounted) {
-        postScores();
-      }
-    });
-    return () => (mounted = false);
-  });
+  // useEffect(() => {
+  //   let mounted = true;
+  //   postScores().then(() => {
+  //     if (mounted) {
+  //       postScores();
+  //     }
+  //   });
+  //   return () => (mounted = false);
+  // });
 
   function handleResetClick() {
     resetGameReset();
