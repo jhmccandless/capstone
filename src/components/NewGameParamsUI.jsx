@@ -6,17 +6,18 @@ function NewGameParamsUI({ gameParameters }) {
   let history = useHistory();
 
   const [selectedOption, setSelectedOption] = useState("standard");
+  // const [gameDetails, setGameDetails] = useState([]);
+  // hooks for each input field
 
   function handleChange(event) {
-    console.log("changed evnet");
     setSelectedOption(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("click");
     let gamePlayDetails = [];
     for (let i = 0; i < 3; i++) {
+      // change this for loop somehow
       gamePlayDetails.push(event.target[i].value);
     }
     gamePlayDetails.push(selectedOption);
