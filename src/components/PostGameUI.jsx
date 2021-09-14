@@ -17,8 +17,8 @@ function PostGameUI({
   resetGameReset,
   diceRollOne,
   canHold,
+  currentGameTotal,
 }) {
-  console.log(currentPlayerInfo);
   let gameWinnerInfo, gameLoserInfo;
   console.log(currentPlayerInfo[0].score > currentPlayerInfo[1].score);
   if (currentPlayerInfo[0].score > currentPlayerInfo[1].score) {
@@ -29,6 +29,21 @@ function PostGameUI({
     console.log("1 is the winner");
     gameWinnerInfo = currentPlayerInfo[1];
     gameLoserInfo = currentPlayerInfo[0];
+  }
+
+  function postScores() {
+    return fetch("http://localhost:3785/scores_db", {
+      method: "POST",
+      body: JSON.stringify({
+        winner: gameWinnerInfo,
+        loser: gameLoserInfo,
+        gameEndTotal: currentGameTotal,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((req) => req.json());
+    // .then((data) => console.log(data));
   }
 
   // useEffect(() => {
@@ -93,9 +108,15 @@ function PostGameUI({
     history.push("/new_game_setup");
   }
 
+  function testingAPIPost() {
+    console.log("testing post");
+    postScores();
+  }
+
   return (
     <>
       <div>
+        {/* make post game revert to new game if no new game */}
         <h2>this is the post game</h2>
         <TotalGoal />
         <p>
@@ -120,6 +141,12 @@ function PostGameUI({
           name="Change Game Parameters"
           handleDesiredClick={() => {
             wholeNewGame();
+          }}
+        />
+        <ButtonUI
+          name="trial button"
+          handleDesiredClick={() => {
+            testingAPIPost();
           }}
         />
       </div>

@@ -15,8 +15,9 @@ app.get("/", async (req, res) => {
   res.send(results);
 });
 
-app.post("/scores", (req, res) => {
-  let newScoreInfo = req.body;
+app.post("/scores_db", async (req, res) => {
+  // let newScoreInfo = req.body;
+  console.log("inside post");
   console.log(req.body);
 });
 
