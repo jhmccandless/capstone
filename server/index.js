@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   const results = await db.query(
-    `SELECT * FROM scores ORDER BY percentage DESC`
+    `SELECT * FROM scores WHERE did_win = 'true' ORDER BY percentage DESC, game_goal DESC`
   );
   res.send(results);
 });
