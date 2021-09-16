@@ -3,7 +3,7 @@ import "./styling/App.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
-import { Box } from "@material-ui/core";
+// import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
 import { createTheme } from "@material-ui/core/styles";
@@ -25,9 +25,7 @@ function App() {
           <BrowserRouter>
             <div className="App">
               <header className="App-header">
-                <Box>
-                  <h1>Porcine</h1>
-                </Box>
+                <h1>One and Done</h1>
                 <div className="link-div">
                   <Link className="header-link" to="/homepage">
                     Home

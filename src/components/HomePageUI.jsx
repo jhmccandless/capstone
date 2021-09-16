@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function HomePageUI() {
   return (
     <>
-      <div>
-        <h1>Welcome Players!</h1>
+      <div className="home-wrapper">
+        <h2>Welcome Players!</h2>
         <p>
           Welcome to the The Pig Game! An application featuring a fun luck-based
           dice game for two players.
