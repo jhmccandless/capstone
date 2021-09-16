@@ -1,4 +1,24 @@
-ul {
-  list-style-type: none;
-  padding: 0;
+.score-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+  margin-left: 15%;
+  width: 70%;
 }
+
+td {
+  /* padding: 10px; */
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 25px 0;
+}
+
+/* 
+th,
+td {
+  border-bottom: 1px solid #ddd;
+} */

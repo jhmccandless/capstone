@@ -1,5 +1,6 @@
 import React from "react";
 import "./styling/App.css";
+import "./styling/webfont/stylesheet.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";

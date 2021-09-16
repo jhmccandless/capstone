@@ -52,7 +52,7 @@ function MainGameUI({
         <Redirect to="/post_game" />
       ) : (
         <div className="main_game_div">
-          <h2>this is the main game page</h2>
+          <h2>Current Game</h2>
           <TotalGoal />
           <DiceRoll />
           <CurrentTotal />

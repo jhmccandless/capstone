@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "../styling/NewGameParams.css";
 
 function NewGameParamsUI({ gameParameters }) {
   let history = useHistory();
@@ -27,48 +28,51 @@ function NewGameParamsUI({ gameParameters }) {
 
   return (
     <>
-      <div>this is the the game parameters</div>
-      <div className="form-div">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="player1">Player 1:</label>
-          <input type="text" defaultValue="Player 1" name="player1"></input>
-          <br />
-          <label htmlFor="player2">Player 2:</label>
-          <input type="text" defaultValue="Player 2" name="player2"></input>
-          <br />
-          <label htmlFor="max_score">Score Goal:</label>
-          <input type="number" name="max_score" defaultValue="100"></input>
-          <br />
-          <label>
-            <input
-              type="radio"
-              value="standard"
-              checked={selectedOption === "standard"}
-              onChange={handleChange}
-            />
-            Standard
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="two-dice"
-              checked={selectedOption === "two-dice"}
-              onChange={handleChange}
-            />
-            Two-Dice Pig
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="big-pig"
-              checked={selectedOption === "big-pig"}
-              onChange={handleChange}
-            />
-            Big Pig
-          </label>
-          <br />
-          <button type="submit">Let's Play!</button>
-        </form>
+      <div className="new-game-wrapper">
+        <h2>Fill in Game Parameters</h2>
+        <br />
+        <div className="form-div">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="player1">Player 1:</label>
+            <input type="text" defaultValue="Player 1" name="player1"></input>
+            <br />
+            <label htmlFor="player2">Player 2:</label>
+            <input type="text" defaultValue="Player 2" name="player2"></input>
+            <br />
+            <label htmlFor="max_score">Score Goal:</label>
+            <input type="number" name="max_score" defaultValue="100"></input>
+            <br />
+            <label>
+              <input
+                type="radio"
+                value="standard"
+                checked={selectedOption === "standard"}
+                onChange={handleChange}
+              />
+              Standard
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="two-dice"
+                checked={selectedOption === "two-dice"}
+                onChange={handleChange}
+              />
+              Two-Dice Pig
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="big-pig"
+                checked={selectedOption === "big-pig"}
+                onChange={handleChange}
+              />
+              Big Pig
+            </label>
+            <br />
+            <button type="submit">Let's Play!</button>
+          </form>
+        </div>
       </div>
     </>
   );
