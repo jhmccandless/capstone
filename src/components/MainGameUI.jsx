@@ -53,23 +53,26 @@ function MainGameUI({
       ) : (
         <div className="main_game_div">
           <TotalGoal />
+          <CurrentTotal />
           <br />
           <DiceRoll />
           <br />
-          <CurrentTotal />
+          <div className="button-div">
+            <ButtonUI
+              name="Hold"
+              handleDesiredClick={() => {
+                handleHoldClick();
+              }}
+            />
+          </div>
           <br />
-          <ButtonUI
-            name="Hold"
-            handleDesiredClick={() => {
-              handleHoldClick();
-            }}
-          />
           <div className="player-wrapper">
             <Player whichPlayer="0" />
             <Player whichPlayer="1" />
           </div>
           <br />
-          <div className="game-end-buttons">
+          <br />
+          <div className="button-div">
             <ButtonUI
               name="Reset"
               handleDesiredClick={() => {

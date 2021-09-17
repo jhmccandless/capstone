@@ -4,7 +4,7 @@ function CurrentTotalUI({ rollTotal }) {
   return (
     <>
       <div>
-        <h3>this is the current total: {rollTotal}</h3>
+        <h3>Current Total: {rollTotal}</h3>
       </div>
     </>
   );

@@ -1,14 +1,27 @@
 .single-player-div {
   display: flex;
   flex-direction: column;
-  border: solid black;
+  justify-content: space-around;
+  border-radius: 10px;
   align-content: center;
-  justify-content: center;
-  height: 200px;
+  height: 100px;
   width: 150px;
   margin: 20px;
+  background-color: rgb(255, 139, 216);
+  opacity: 0.6;
 }
 
 .isTurn {
+  display: inherit;
+  justify-content: space-around;
   background-color: rgb(255, 139, 216);
+  opacity: 1;
+  box-shadow: 0 0 40px 20px #fff, 0 0 60px 30px #f0f;
+  height: 150px;
+  width: 175px;
+  padding: 25px;
+}
+
+p {
+  margin: 0px;
 }

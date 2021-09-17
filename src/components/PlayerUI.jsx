@@ -7,15 +7,15 @@ function PlayerUI({ playerState, whichPlayer }) {
     <>
       {playerObj.isPlaying ? (
         <div className="single-player-div isTurn">
-          <div className="player-name">{playerObj.name}</div>
-          <div className="current-player-score">score: {playerObj.score}</div>
-          Playing? {playerObj.isPlaying.toString()}
+          <p className="current-player-score">score: {playerObj.score}</p>
+          <p className="player-name">{playerObj.name}</p>
+          {/* Playing? {playerObj.isPlaying.toString()} */}
         </div>
       ) : (
         <div className="single-player-div">
-          <div className="player-name">{playerObj.name}</div>
-          <div className="current-player-score">score: {playerObj.score}</div>
-          Playing? {playerObj.isPlaying.toString()}
+          <p className="current-player-score">score: {playerObj.score}</p>
+          <p className="player-name">{playerObj.name}</p>
+          {/* Playing? {playerObj.isPlaying.toString()} */}
         </div>
       )}
     </>
