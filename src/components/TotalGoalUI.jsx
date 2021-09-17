@@ -3,7 +3,7 @@ import React from "react";
 function TotalGoalUI({ gameTotal }) {
   return (
     <>
-      <div>Game ends at: {gameTotal} </div>
+      <h3>Game ends at: {gameTotal}</h3>
     </>
   );
 }

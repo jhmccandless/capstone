@@ -14,3 +14,7 @@
   width: min-content;
   height: inherit;
 }
+
+h3 {
+  margin: 0;
+}

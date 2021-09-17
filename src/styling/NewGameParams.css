@@ -1,14 +1,43 @@
 button,
-input[type="submit"],
-input[type="reset"] {
+input[type="submit"] {
   background: none;
   color: white;
   border: none;
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  border: solid black;
+  box-shadow: 4px 4px white;
   padding: 2px;
-  box-shadow: 5px 5px white;
+  margin: 0 30px 20px;
   border: solid white;
+  border-width: 2px;
+  width: 200px;
+  background-color: rgb(255, 139, 216);
+  text-shadow: 3px 3px 3px black;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: black;
+}
+
+input[type="text"],
+[type="number"] {
+  font-family: inherit;
+  margin: 5px;
+  height: 40px;
+  width: 200px;
+  border-radius: none;
+  background-color: rgb(255, 139, 216);
+}
+
+input[type="number"] {
+  width: 70px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 40px;
+}
+
+.player-name-form {
+  width: inherit;
 }

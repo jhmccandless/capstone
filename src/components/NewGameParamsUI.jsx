@@ -33,14 +33,16 @@ function NewGameParamsUI({ gameParameters }) {
         <br />
         <div className="form-div">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="player1">Player 1:</label>
-            <input type="text" defaultValue="Player 1" name="player1"></input>
-            <br />
-            <label htmlFor="player2">Player 2:</label>
-            <input type="text" defaultValue="Player 2" name="player2"></input>
+            <div className="player-name-form">
+              <label htmlFor="player1">Player 1:</label>
+              <input type="text" defaultValue="Player 1" name="player1"></input>
+              <label htmlFor="player2">Player 2:</label>
+              <input type="text" defaultValue="Player 2" name="player2"></input>
+            </div>
             <br />
             <label htmlFor="max_score">Score Goal:</label>
             <input type="number" name="max_score" defaultValue="100"></input>
+            <br />
             <br />
             <label>
               <input
@@ -70,7 +72,10 @@ function NewGameParamsUI({ gameParameters }) {
               Big Pig
             </label>
             <br />
-            <button type="submit">Let's Play!</button>
+            <br />
+            <button type="submit">
+              <a>Let's Play!</a>
+            </button>
           </form>
         </div>
       </div>

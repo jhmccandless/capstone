@@ -1,6 +1,5 @@
 .wrapper {
   display: flex;
-  border-style: solid;
   border-color: black;
   height: 100px;
   align-items: center;
@@ -9,8 +8,20 @@
 }
 
 .single_dice {
-  border: solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: none;
+  background-color: rgb(255, 139, 216);
+  border-radius: 10px;
   margin: 20px;
-  height: 70px;
-  width: 70px;
+  height: 100px;
+  width: 100px;
+  border: solid white;
+  box-shadow: 4px 4px white;
+}
+
+.single_dice > p {
+  margin: 0;
+  font-size: 30pt;
 }

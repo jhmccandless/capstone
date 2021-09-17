@@ -1,4 +1,9 @@
+.body {
+  font-family: "ethnocentricregular";
+}
+
 .App {
+  font-family: "ethnocentricregular";
   text-align: center;
   background-image: url("../neon-background.jpeg");
   background-attachment: fixed;
@@ -19,6 +24,7 @@ h3,
 h4,
 th,
 td,
+a,
 .header-link,
 label {
   font-family: "ethnocentricregular";
@@ -56,6 +62,7 @@ h4 {
   box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
     rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px,
     rgba(240, 46, 170, 0.05) 25px 25px;
+  /* box-shadow: 8px 8px white; */
   display: flex;
   flex-direction: column;
   align-items: center;

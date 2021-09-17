@@ -3,7 +3,9 @@ import React from "react";
 function CurrentTotalUI({ rollTotal }) {
   return (
     <>
-      <div>this is the current total: {rollTotal}</div>
+      <div>
+        <h3>this is the current total: {rollTotal}</h3>
+      </div>
     </>
   );
 }

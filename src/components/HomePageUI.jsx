@@ -16,7 +16,7 @@ function HomePageUI() {
           through the menu or by clicking below:
         </p>
         <Link className="link" to="/new_game_setup">
-          New Game
+          <a>New Game</a>
         </Link>
       </div>
     </>

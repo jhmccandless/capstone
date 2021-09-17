@@ -52,32 +52,37 @@ function MainGameUI({
         <Redirect to="/post_game" />
       ) : (
         <div className="main_game_div">
-          <h2>Current Game</h2>
           <TotalGoal />
+          <br />
           <DiceRoll />
+          <br />
           <CurrentTotal />
-          <div className="player-wrapper">
-            <Player whichPlayer="0" />
-            <Player whichPlayer="1" />
-          </div>
+          <br />
           <ButtonUI
             name="Hold"
             handleDesiredClick={() => {
               handleHoldClick();
             }}
           />
-          <ButtonUI
-            name="Reset"
-            handleDesiredClick={() => {
-              handleResetClick();
-            }}
-          />
-          <ButtonUI
-            name="Change Game Parameters"
-            handleDesiredClick={() => {
-              wholeNewGame();
-            }}
-          />
+          <div className="player-wrapper">
+            <Player whichPlayer="0" />
+            <Player whichPlayer="1" />
+          </div>
+          <br />
+          <div className="game-end-buttons">
+            <ButtonUI
+              name="Reset"
+              handleDesiredClick={() => {
+                handleResetClick();
+              }}
+            />
+            <ButtonUI
+              name="Change Game Parameters"
+              handleDesiredClick={() => {
+                wholeNewGame();
+              }}
+            />
+          </div>
         </div>
       )}
     </>
