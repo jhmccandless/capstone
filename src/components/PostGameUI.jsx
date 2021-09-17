@@ -1,8 +1,8 @@
 import React from "react";
-import TotalGoal from "../containers/TotalGoal";
 import ButtonUI from "./ButtonUI";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
+import "../styling/PostGame.css";
 
 function PostGameUI({
   dice1Current,
@@ -98,10 +98,11 @@ function PostGameUI({
       <div>
         {/* make post game revert to new game if no new game */}
         <h2>this is the post game</h2>
-        <TotalGoal />
+        <br />
         <p>
           the winner is {gameWinnerInfo.name} with {gameWinnerInfo.score}
         </p>
+        <br />
         <p>
           the loser is {gameLoserInfo.name} with {gameLoserInfo.score}
         </p>
@@ -111,24 +112,27 @@ function PostGameUI({
             handleHoldClick();
           }}
         /> */}
-        <ButtonUI
-          name="Reset"
-          handleDesiredClick={() => {
-            handleResetClick();
-          }}
-        />
-        <ButtonUI
-          name="Change Game Parameters"
-          handleDesiredClick={() => {
-            wholeNewGame();
-          }}
-        />
-        {/* <ButtonUI
+        <br />
+        <div className="button-div">
+          <ButtonUI
+            name="Reset"
+            handleDesiredClick={() => {
+              handleResetClick();
+            }}
+          />
+          <ButtonUI
+            name="Change Game Parameters"
+            handleDesiredClick={() => {
+              wholeNewGame();
+            }}
+          />
+          {/* <ButtonUI
           name="trial button"
           handleDesiredClick={() => {
             testingAPIPost();
           }}
         /> */}
+        </div>
       </div>
     </>
   );

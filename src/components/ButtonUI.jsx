@@ -9,7 +9,7 @@ function ButtonUI({ handleDesiredClick, name }) {
           handleDesiredClick();
         }}
       >
-        {name}
+        <p>{name}</p>
       </button>
     </>
   );

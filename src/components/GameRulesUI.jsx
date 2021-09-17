@@ -7,6 +7,8 @@ function GameRulesUI() {
       <div className="rules-wrapper">
         <h2>General Rules</h2>
         <h4>(As seen on Wikipedia)</h4>
+        <br />
+        <br />
         <div className="general">
           <h3>Standard Pig Game</h3>
           <p>
@@ -26,6 +28,7 @@ function GameRulesUI() {
             of 22 points to her score.
           </p>
         </div>
+        <br />
         <div className="two-dice">
           <h3>Two-Dice Pig Game</h3>
           <p>
@@ -39,6 +42,7 @@ function GameRulesUI() {
             again (possible sub-variation of the two-dice game)
           </p>
         </div>
+        <br />
         <div className="big-pig">
           <h3>Big Pig Game</h3>
           <p>

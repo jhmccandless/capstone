@@ -34,17 +34,28 @@ function NewGameParamsUI({ gameParameters }) {
         <div className="form-div">
           <form onSubmit={handleSubmit}>
             <div className="player-name-form">
-              <label htmlFor="player1">Player 1:</label>
-              <input type="text" defaultValue="Player 1" name="player1"></input>
-              <label htmlFor="player2">Player 2:</label>
-              <input type="text" defaultValue="Player 2" name="player2"></input>
+              <div className="player-name">
+                <label htmlFor="player1">Player 1:</label>
+                <input
+                  type="text"
+                  defaultValue="Player 1"
+                  name="player1"
+                ></input>
+              </div>
+              <div className="player-name">
+                <label htmlFor="player2">Player 2:</label>
+                <input
+                  type="text"
+                  defaultValue="Player 2"
+                  name="player2"
+                ></input>
+              </div>
             </div>
-            <br />
             <label htmlFor="max_score">Score Goal:</label>
             <input type="number" name="max_score" defaultValue="100"></input>
             <br />
             <br />
-            <label>
+            <label className="radio">
               <input
                 type="radio"
                 value="standard"
@@ -53,7 +64,7 @@ function NewGameParamsUI({ gameParameters }) {
               />
               Standard
             </label>
-            <label>
+            <label className="radio">
               <input
                 type="radio"
                 value="two-dice"
@@ -62,7 +73,7 @@ function NewGameParamsUI({ gameParameters }) {
               />
               Two-Dice Pig
             </label>
-            <label>
+            <label className="radio">
               <input
                 type="radio"
                 value="big-pig"
@@ -74,7 +85,7 @@ function NewGameParamsUI({ gameParameters }) {
             <br />
             <br />
             <button type="submit">
-              <a>Let's Play!</a>
+              <p>Let's Play!</p>
             </button>
           </form>
         </div>
