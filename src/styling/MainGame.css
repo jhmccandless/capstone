@@ -1,0 +1,26 @@
+.main_game_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-wrapper {
+  display: flex;
+  /* border-style: solid; */
+  /* border-color: black; */
+  height: 100px;
+  align-items: center;
+  justify-items: center;
+  width: min-content;
+  height: inherit;
+}
+
+h3 {
+  margin: 0;
+}
+
+.button-div {
+  display: inherit;
+  justify-content: center;
+  align-items: center;
+}

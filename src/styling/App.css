@@ -1,20 +1,86 @@
+.body {
+  font-family: "ethnocentricregular";
+}
+
 .App {
+  font-family: "ethnocentricregular";
   text-align: center;
+  background-image: url("../neon-background.jpeg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px;
+
+  /* font-family: "CustomFont"; */
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+th,
+td,
+a,
+.header-link,
+label {
+  font-family: "ethnocentricregular";
+  font-weight: 600;
+  color: white;
+  opacity: 87%;
+  text-shadow: 3px 3px 3px black;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: black;
+}
+p,
+label {
+  font-size: 13pt;
+  font-weight: 600;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0;
+  font-size: 25pt;
+}
+h3 {
+  margin-bottom: 0;
+  font-size: 19pt;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14pt;
 }
 
 .App-header {
-  /* min-height: 40px; */
+  margin: 0 40px 40px;
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
+    rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px,
+    rgba(240, 46, 170, 0.05) 25px 25px;
+  /* box-shadow: 8px 8px white; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* font-size: calc(10px + 2vmin); */
-  margin: 10px;
-  border: solid black;
+  border: solid white;
+  border-width: 6px;
+  margin-left: 15%;
+  width: 70%;
 }
 
 .App-header > h1 {
-  margin: 10px 0;
+  margin: 10px 10px 0 0;
+  font-size: 30pt;
+}
+
+.header-link {
+  font-size: large;
+  font-weight: bold;
 }
 
 .link-div {
@@ -26,7 +92,6 @@
 .link-div > .header-link {
   margin: 0 10px;
   text-decoration: none;
-  color: black;
 }
 
 @keyframes App-logo-float {

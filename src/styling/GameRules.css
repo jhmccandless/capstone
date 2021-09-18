@@ -1,0 +1,8 @@
+.rules-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin-left: 15%;
+  width: 70%;
+}

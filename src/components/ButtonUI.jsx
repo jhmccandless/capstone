@@ -4,13 +4,13 @@ function ButtonUI({ handleDesiredClick, name }) {
   // console.log(handleDesiredClick);
   return (
     <>
-      <div
+      <button
         onClick={() => {
           handleDesiredClick();
         }}
       >
-        this is the a button {name}
-      </div>
+        <p>{name}</p>
+      </button>
     </>
   );
 }

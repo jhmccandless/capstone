@@ -1,8 +1,8 @@
 import React from "react";
-import TotalGoal from "../containers/TotalGoal";
 import ButtonUI from "./ButtonUI";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
+import "../styling/PostGame.css";
 
 function PostGameUI({
   dice1Current,
@@ -95,41 +95,46 @@ function PostGameUI({
 
   return (
     <>
-      <div>
-        {/* make post game revert to new game if no new game */}
-        <h2>this is the post game</h2>
-        <TotalGoal />
-        <p>
-          the winner is {gameWinnerInfo.name} with {gameWinnerInfo.score}
-        </p>
-        <p>
-          the loser is {gameLoserInfo.name} with {gameLoserInfo.score}
-        </p>
-        {/* <ButtonUI
-          name="Hold"
-          handleDesiredClick={() => {
-            handleHoldClick();
-          }}
-        /> */}
-        <ButtonUI
-          name="Reset"
-          handleDesiredClick={() => {
-            handleResetClick();
-          }}
-        />
-        <ButtonUI
-          name="Change Game Parameters"
-          handleDesiredClick={() => {
-            wholeNewGame();
-          }}
-        />
-        {/* <ButtonUI
-          name="trial button"
-          handleDesiredClick={() => {
-            testingAPIPost();
-          }}
-        /> */}
-      </div>
+      {!gameWinnerInfo ? (
+        <div className="game-interrupted">
+          <h3>Game Interrupted!</h3>
+          <br />
+          <ButtonUI
+            name="New Game"
+            handleDesiredClick={() => {
+              wholeNewGame();
+            }}
+          />
+        </div>
+      ) : (
+        <div>
+          {/* make post game revert to new game if no new game */}
+          <h2>this is the post game</h2>
+          <br />
+          <p>
+            the winner is {gameWinnerInfo.name} with {gameWinnerInfo.score}
+          </p>
+          <br />
+          <p>
+            the loser is {gameLoserInfo.name} with {gameLoserInfo.score}
+          </p>
+          <br />
+          <div className="button-div">
+            <ButtonUI
+              name="Reset"
+              handleDesiredClick={() => {
+                handleResetClick();
+              }}
+            />
+            <ButtonUI
+              name="New Game"
+              handleDesiredClick={() => {
+                wholeNewGame();
+              }}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

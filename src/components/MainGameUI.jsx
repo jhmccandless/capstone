@@ -5,6 +5,7 @@ import CurrentTotal from "../containers/CurrentTotal";
 import TotalGoal from "../containers/TotalGoal";
 import ButtonUI from "./ButtonUI";
 import { Redirect, useHistory } from "react-router-dom";
+import "../styling/MainGame.css";
 
 function MainGameUI({
   dice1Current,
@@ -50,31 +51,41 @@ function MainGameUI({
       {!gamePlaying ? (
         <Redirect to="/post_game" />
       ) : (
-        <div>
-          <h2>this is the main game page</h2>
+        <div className="main_game_div">
           <TotalGoal />
-          <DiceRoll />
           <CurrentTotal />
-          <Player whichPlayer="0" />
-          <Player whichPlayer="1" />
-          <ButtonUI
-            name="Hold"
-            handleDesiredClick={() => {
-              handleHoldClick();
-            }}
-          />
-          <ButtonUI
-            name="Reset"
-            handleDesiredClick={() => {
-              handleResetClick();
-            }}
-          />
-          <ButtonUI
-            name="Change Game Parameters"
-            handleDesiredClick={() => {
-              wholeNewGame();
-            }}
-          />
+          <br />
+          <DiceRoll />
+          <br />
+          <div className="button-div">
+            <ButtonUI
+              name="Hold"
+              handleDesiredClick={() => {
+                handleHoldClick();
+              }}
+            />
+          </div>
+          <br />
+          <div className="player-wrapper">
+            <Player whichPlayer="0" />
+            <Player whichPlayer="1" />
+          </div>
+          <br />
+          <br />
+          <div className="button-div">
+            <ButtonUI
+              name="Reset"
+              handleDesiredClick={() => {
+                handleResetClick();
+              }}
+            />
+            <ButtonUI
+              name="New Game"
+              handleDesiredClick={() => {
+                wholeNewGame();
+              }}
+            />
+          </div>
         </div>
       )}
     </>

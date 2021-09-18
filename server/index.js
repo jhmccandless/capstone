@@ -11,39 +11,53 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", async (req, res) => {
-  const results = await db.query(`SELECT * FROM scores`);
+  const results = await db.query(
+    `SELECT * FROM scores WHERE did_win = 'true' ORDER BY percentage DESC, game_goal DESC`
+  );
   res.send(results);
 });
 
 app.post("/scores_db", async (req, res) => {
   const gameEndInfo = req.body;
-  let winner, loser, winnerScore, loserScore, gameType, gameEndScore, date;
+  let winner,
+    loser,
+    winnerScore,
+    loserScore,
+    gameType,
+    gameEndScore,
+    date,
+    percentageWin,
+    percentageWinNeg;
   winner = gameEndInfo.winner.name;
   winnerScore = gameEndInfo.winner.score;
   loser = gameEndInfo.loser.name;
   loserScore = gameEndInfo.loser.score;
   gameType = gameEndInfo.gameType;
   gameEndScore = gameEndInfo.gameEndTotal;
+  percentageWin = (winnerScore - loserScore) / winnerScore;
+  percentageWinNeg = (-1 * (winnerScore - loserScore)) / winnerScore;
   date = new Date().toISOString().slice(0, 19).replace("T", " ");
   db.none(
-    `INSERT INTO scores (username, did_win, own_score, opponent_score, created_on, game_type, game_goal)
+    `INSERT INTO scores (username, did_win, created_on, game_type, own_score, opponent_score, game_goal, percentage)
 VALUES ('${winner}',
   'true',
-  '${winnerScore}',
-  '${loserScore}',
   '${date}',
   '${gameType}',
-  '${gameEndScore}')`
+  ${winnerScore},
+  ${loserScore},
+  ${gameEndScore},
+  ${percentageWin})`
   );
   db.none(
-    `INSERT INTO scores (username, did_win, own_score, opponent_score, created_on, game_type, game_goal)
+    `INSERT INTO scores (username, did_win, created_on, game_type, own_score, opponent_score, game_goal, percentage)
 VALUES ('${loser}',
   'false',
-  '${loserScore}',
-  '${winnerScore}',
   '${date}',
   '${gameType}',
-  '${gameEndScore}')`
+  ${loserScore},
+  ${winnerScore},
+  ${gameEndScore},
+  ${percentageWinNeg})`
   );
 });
 

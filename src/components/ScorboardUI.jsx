@@ -18,18 +18,46 @@ function ScoreboardUI() {
     });
     return () => (mounted = false);
   }, []);
-  // console.log(gettingData());
 
   return (
     <>
-      <div>this is the the scoreboard</div>
-      <ul>
-        {scores.map((scores, index) => (
-          <li key={index}>
-            {scores.username} score: {scores.own_score}
-          </li>
-        ))}
-      </ul>
+      <div className="score-wrapper">
+        <h2>Scoreboard</h2>
+        <p>
+          The ranks are are determined on the percentage the winner won by at
+          the end of the game. If two or more percentages are the same, the game
+          won with a higher Game Goal is ranked higer.
+        </p>
+        <br />
+        <div className="scoreTable">
+          <table id="cal-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Percentage Won By</th>
+                <th>Game Goal</th>
+                <th>Score</th>
+                <th>Opponent's Score</th>
+                {/* <th>Game Type</th> */}
+              </tr>
+            </thead>
+            <tbody>
+              {scores.map((el, index) => (
+                <tr key={index}>
+                  <th>{index + 1}</th>
+                  <th>{el.username}</th>
+                  <th>{el.percentage}</th>
+                  <th>{el.game_goal}</th>
+                  <th>{el.own_score}</th>
+                  <th>{el.opponent_score}</th>
+                  {/* <th>{el.game_type}</th> */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </>
   );
 }
