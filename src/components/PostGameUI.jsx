@@ -95,45 +95,46 @@ function PostGameUI({
 
   return (
     <>
-      <div>
-        {/* make post game revert to new game if no new game */}
-        <h2>this is the post game</h2>
-        <br />
-        <p>
-          the winner is {gameWinnerInfo.name} with {gameWinnerInfo.score}
-        </p>
-        <br />
-        <p>
-          the loser is {gameLoserInfo.name} with {gameLoserInfo.score}
-        </p>
-        {/* <ButtonUI
-          name="Hold"
-          handleDesiredClick={() => {
-            handleHoldClick();
-          }}
-        /> */}
-        <br />
-        <div className="button-div">
+      {!gameWinnerInfo ? (
+        <div className="game-interrupted">
+          <h3>Game Interrupted!</h3>
+          <br />
           <ButtonUI
-            name="Reset"
-            handleDesiredClick={() => {
-              handleResetClick();
-            }}
-          />
-          <ButtonUI
-            name="Change Game Parameters"
+            name="New Game"
             handleDesiredClick={() => {
               wholeNewGame();
             }}
           />
-          {/* <ButtonUI
-          name="trial button"
-          handleDesiredClick={() => {
-            testingAPIPost();
-          }}
-        /> */}
         </div>
-      </div>
+      ) : (
+        <div>
+          {/* make post game revert to new game if no new game */}
+          <h2>this is the post game</h2>
+          <br />
+          <p>
+            the winner is {gameWinnerInfo.name} with {gameWinnerInfo.score}
+          </p>
+          <br />
+          <p>
+            the loser is {gameLoserInfo.name} with {gameLoserInfo.score}
+          </p>
+          <br />
+          <div className="button-div">
+            <ButtonUI
+              name="Reset"
+              handleDesiredClick={() => {
+                handleResetClick();
+              }}
+            />
+            <ButtonUI
+              name="New Game"
+              handleDesiredClick={() => {
+                wholeNewGame();
+              }}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

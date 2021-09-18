@@ -52,3 +52,17 @@ input[type="number"]::-webkit-outer-spin-button {
 .player-name {
   margin: 10px;
 }
+
+.radio input {
+  /* position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 15px;
+  width: 15px; */
+  border-radius: 50%;
+}
+
+.radio input:checked {
+  border-radius: 50%;
+  background-color: #2196f3;
+}

@@ -55,6 +55,8 @@ function NewGameParamsUI({ gameParameters }) {
             <input type="number" name="max_score" defaultValue="100"></input>
             <br />
             <br />
+            <h3>Game Style:</h3>
+
             <label className="radio">
               <input
                 type="radio"
@@ -64,6 +66,8 @@ function NewGameParamsUI({ gameParameters }) {
               />
               Standard
             </label>
+            <br />
+
             <label className="radio">
               <input
                 type="radio"
@@ -73,6 +77,8 @@ function NewGameParamsUI({ gameParameters }) {
               />
               Two-Dice Pig
             </label>
+            <br />
+
             <label className="radio">
               <input
                 type="radio"

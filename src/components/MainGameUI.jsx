@@ -80,7 +80,7 @@ function MainGameUI({
               }}
             />
             <ButtonUI
-              name="Change Game Parameters"
+              name="New Game"
               handleDesiredClick={() => {
                 wholeNewGame();
               }}
