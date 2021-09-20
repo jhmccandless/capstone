@@ -63,7 +63,7 @@ function game_reducer(state = initialState, action) {
         ...state,
         currentRoll: 0,
         currentTotal: 0,
-        diceRoll: [0, 0],
+        // diceRoll: [0, 0],
         playerInfo: [
           {
             name: state.playerInfo[0].name,
