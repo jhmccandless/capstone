@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styling/DiceBox.css";
+import PopUpUI from "./PopupUI";
 
 function DiceRollUI({
   isGamePlaying,
@@ -12,6 +13,12 @@ function DiceRollUI({
   disableHold,
   loseScore,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+  const togglePopup = function () {
+    setIsOpen(!isOpen);
+  };
+
   // generating one dice for the map array if needed
   if (!isTwoDiceGame) {
     diceRoll = [diceRoll[0]];
@@ -44,6 +51,10 @@ function DiceRollUI({
               // double one two dice ONLY
               loseScore();
               diceRollsOne();
+              togglePopup();
+              setPopupMessage(
+                `Two one's rolled, lose your own score and is next player's turn`
+              );
             }
           } else {
             // non one double two dice/big pig
@@ -60,6 +71,10 @@ function DiceRollUI({
         } else if (newRollArr[0] === 1 || newRollArr[1] === 1) {
           // either dice is a one two dice/big pig
           diceRollsOne();
+          togglePopup();
+          setPopupMessage(
+            `A single dice shows a one, current total reset and next player's turn`
+          );
         } else {
           // regular non double roll two dice/big pig
           currentTotalUpdate(newRollArr.reduce((a, b) => a + b, 0));
@@ -67,6 +82,10 @@ function DiceRollUI({
       } else if (newRollArr[0] === 1) {
         // roll one standard pig
         diceRollsOne();
+        togglePopup();
+        setPopupMessage(
+          `A single dice shows a one, current total reset and next player's turn`
+        );
       } else {
         // reg roll standard pig
         currentTotalUpdate(newRollArr[0]);
@@ -78,20 +97,35 @@ function DiceRollUI({
 
   return (
     <>
-      <div
-        className="wrapper"
-        onClick={() => {
-          handleClick();
-        }}
-      >
-        {diceRoll.map((el, index) => {
-          return (
-            <div className="single_dice" key={index}>
-              <p>{el}</p>
-            </div>
-          );
-        })}
-      </div>
+      {!isOpen ? (
+        <div
+          className="wrapper"
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          {diceRoll.map((el, index) => {
+            return (
+              <div className="single_dice" key={index}>
+                <p>{el}</p>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div>
+          {isOpen && (
+            <PopUpUI
+              content={
+                <>
+                  <p className="popup-message">{popupMessage}</p>
+                </>
+              }
+              handleClose={togglePopup}
+            />
+          )}
+        </div>
+      )}
     </>
   );
 }

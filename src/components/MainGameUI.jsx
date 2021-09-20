@@ -53,9 +53,10 @@ function MainGameUI({
       ) : (
         <div className="main_game_div">
           <TotalGoal />
-          <CurrentTotal />
           <br />
           <DiceRoll />
+          <br />
+          <CurrentTotal />
           <br />
           <div className="button-div">
             <ButtonUI
