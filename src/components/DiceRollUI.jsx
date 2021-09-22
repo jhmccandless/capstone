@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styling/DiceBox.css";
-import PopUpUI from "./PopupUI";
+import Popup from "../containers/Popup";
 
 function DiceRollUI({
   isGamePlaying,
@@ -115,10 +115,10 @@ function DiceRollUI({
       ) : (
         <div>
           {isOpen && (
-            <PopUpUI
+            <Popup
               content={
                 <>
-                  <p className="popup-message">{popupMessage}</p>
+                  <div className="popup-message">{popupMessage}</div>
                 </>
               }
               handleClose={togglePopup}

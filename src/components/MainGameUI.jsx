@@ -43,6 +43,7 @@ function MainGameUI({
   }
 
   function wholeNewGame() {
+    resetGameReset();
     history.push("/new_game_setup");
   }
 
