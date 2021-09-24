@@ -29,3 +29,8 @@
 .popup-message {
   font-size: 12pt;
 }
+
+.pointer {
+  cursor: pointer;
+  user-select: none;
+}

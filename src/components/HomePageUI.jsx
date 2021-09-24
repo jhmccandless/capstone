@@ -9,8 +9,9 @@ function HomePageUI() {
         <h2>Welcome Players!</h2>
         <br />
         <p>
-          Welcome to the The Pig Game! An application featuring a fun luck-based
-          dice game for two players.
+          Welcome to One and Done! An application featuring a fun luck-based
+          dice game for two players. One and Done is commonly known as the Pig
+          Game.
         </p>
         <br />
         <p>

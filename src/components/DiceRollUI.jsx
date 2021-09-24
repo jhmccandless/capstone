@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styling/DiceBox.css";
-import Popup from "../containers/Popup";
+import PopupUI from "./PopupUI";
 
 function DiceRollUI({
   isGamePlaying,
@@ -99,7 +99,7 @@ function DiceRollUI({
     <>
       {!isOpen ? (
         <div
-          className="wrapper"
+          className="wrapper pointer"
           onClick={() => {
             handleClick();
           }}
@@ -115,7 +115,7 @@ function DiceRollUI({
       ) : (
         <div>
           {isOpen && (
-            <Popup
+            <PopupUI
               content={
                 <>
                   <div className="popup-message">{popupMessage}</div>
