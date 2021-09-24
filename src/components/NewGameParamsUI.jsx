@@ -58,6 +58,7 @@ function NewGameParamsUI({ gameParameters }) {
                   type="text"
                   defaultValue="Player 1"
                   name="player1"
+                  maxLength="30"
                 ></input>
               </div>
               <div className="player-name">
@@ -66,11 +67,18 @@ function NewGameParamsUI({ gameParameters }) {
                   type="text"
                   defaultValue="Player 2"
                   name="player2"
+                  maxLength="30"
                 ></input>
               </div>
             </div>
             <label htmlFor="max_score">Score Goal:</label>
-            <input type="number" name="max_score" defaultValue="100"></input>
+            <input
+              type="number"
+              name="max_score"
+              defaultValue="100"
+              min="1"
+              max="1000"
+            ></input>
             <br />
             <br />
             <h3>Game Style:</h3>
