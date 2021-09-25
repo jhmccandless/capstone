@@ -30,7 +30,7 @@ function ScoreboardUI() {
         </p>
         <br />
         <div className="scoreTable">
-          <table id="cal-table">
+          <table id="score-table">
             <thead>
               <tr>
                 <th>Rank</th>
