@@ -39,6 +39,7 @@ function ScoreboardUI() {
                 <th>Game Goal</th>
                 <th>Score</th>
                 <th>Opponent's Score</th>
+                <th>Game Date</th>
                 {/* <th>Game Type</th> */}
               </tr>
             </thead>
@@ -51,6 +52,13 @@ function ScoreboardUI() {
                   <th>{el.game_goal}</th>
                   <th>{el.own_score}</th>
                   <th>{el.opponent_score}</th>
+                  <th>
+                    {new Date(el.created_on).toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })}
+                  </th>
                   {/* <th>{el.game_type}</th> */}
                 </tr>
               ))}
