@@ -84,6 +84,7 @@ function game_reducer(state = initialState, action) {
         console.log("winner");
         return {
           ...state,
+          diceRoll: [0, 0],
           gamePlaying: false,
           playerInfo: state.playerInfo.map((player) =>
             !player.isPlaying
@@ -94,6 +95,7 @@ function game_reducer(state = initialState, action) {
       } else {
         return {
           ...state,
+          diceRoll: [0, 0],
           playerInfo: state.playerInfo.map((player) =>
             !player.isPlaying
               ? { ...player, score: (player.score += action.data[4]) }
