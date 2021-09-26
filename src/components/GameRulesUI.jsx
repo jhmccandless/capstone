@@ -6,50 +6,52 @@ function GameRulesUI() {
     <>
       <div className="rules-wrapper">
         <h2>General Rules</h2>
-        <h4>(As seen on Wikipedia)</h4>
-        <br />
+        <p>
+          One and Done is a luck-based dice game with three variant types:
+          Standard, Two-Dice, Big-Pig. General game play and a few general rules
+          that apply to the game, irregardless of game variant.
+        </p>
         <br />
         <div className="general">
-          <h3>Standard Pig Game</h3>
+          <h3>Overall Rules (Standard Game)</h3>
           <p>
-            Each turn, a player repeatedly rolls a die until either a 1 is
-            rolled or the player decides to "hold": If the player rolls a 1,
-            they score nothing and it becomes the next player's turn. If the
-            player rolls any other number, it is added to their turn total and
-            the player's turn continues. If a player chooses to "hold", their
-            turn total is added to their score, and it becomes the next player's
-            turn. The first player to score 100 or more points wins. For
-            example, the first player, Donald, begins a turn with a roll of 5.
-            Donald could hold and score 5 points, but chooses to roll again.
-            Donald rolls a 2, and could hold with a turn total of 7 points, but
-            chooses to roll again. Donald rolls a 1, and must end his turn
-            without scoring. The next player, Alexis, rolls the sequence
-            4-5-3-5-5, after which she chooses to hold, and adds her turn total
-            of 22 points to her score.
+            The overall goal of the game is for a player’s score to achieve the
+            Game Score. The players’ score can be greater than or equal to the
+            game score to win. Game play revolves around clicking the dice(s)
+            button with the dice(s) value accumulating in the Current Total
+            during a player’s turn. At anytime during a player’s turn, they have
+            the option to 1) Continue the turn by rolling(clicking) the dice or
+            2) Ending your turn with the Hold button which will then add the
+            Current Total to your score and set the Current Total back to zero
+            for the next player. However, if a [single] dice rolls a one, it
+            automatically becomes the next players turn with the Current Total
+            not added to your score and the Current Total goes to zero for the
+            next player.
           </p>
         </div>
         <br />
         <div className="two-dice">
-          <h3>Two-Dice Pig Game</h3>
+          <h3>Two-Dice Variant</h3>
           <p>
-            Two-Dice Pig The game can be played with a pair of dice instead of
-            one This variation is the same as Pig, except: Two standard dice are
-            rolled. If neither shows a 1, their sum is added to the turn total.
-            If a single 1 is rolled, the player scores nothing and the turn
-            ends. If two 1s are rolled, the player’s entire score is lost, and
-            the turn ends. If a double is rolled, the point total is added to
-            the turn total as with any roll but the player is obligated to roll
-            again (possible sub-variation of the two-dice game)
+            The Two-Dice variant follows the same game play and rules with a few
+            twists. For one, since there are two dice, if a double a rolled, the
+            current player does not have the option to hold and must roll again.
+            Since there is a possibility of two one’s rolling at the same time,
+            the game follows the same rules as if with one dice rolling a one
+            (clears the current total and becomes the next player’s turn) as
+            well as clears the current player’s score!
           </p>
         </div>
         <br />
         <div className="big-pig">
-          <h3>Big Pig Game</h3>
+          <h3>Big-Pig Variant</h3>
           <p>
-            Big Pig This variation is the same as Two-Dice Pig, except: If two
-            1s are rolled, the player adds 25 to the turn total. If other
-            doubles are rolled, the player adds twice the value of the dice to
-            the turn total.
+            This variant also uses two dice and follows the Overall Rules. If a
+            double is rolled, the current player cannot hold and must be roll
+            again but unlike the Two-Dice variant, if a double is rolled, the
+            total value on the dice is multiplied by two before being added to
+            the current score. If the double is a double one, then the Current
+            Total adds 25 and the play continues with the current player.
           </p>
         </div>
       </div>

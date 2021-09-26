@@ -18,13 +18,10 @@ function PostGameUI({
   state,
 }) {
   let gameWinnerInfo, gameLoserInfo, gameType;
-  console.log(currentPlayerInfo[0].score > currentPlayerInfo[1].score);
   if (currentPlayerInfo[0].score > currentPlayerInfo[1].score) {
-    console.log("0 is the winner");
     gameWinnerInfo = currentPlayerInfo[0];
     gameLoserInfo = currentPlayerInfo[1];
   } else if (currentPlayerInfo[0].score < currentPlayerInfo[1].score) {
-    console.log("1 is the winner");
     gameWinnerInfo = currentPlayerInfo[1];
     gameLoserInfo = currentPlayerInfo[0];
   }
@@ -87,11 +84,6 @@ function PostGameUI({
   function wholeNewGame() {
     history.push("/new_game_setup");
   }
-
-  // function testingAPIPost() {
-  //   console.log("testing post");
-  //   postScores();
-  // }
 
   return (
     <>

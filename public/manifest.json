@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "One and Done",
+  "name": "One and Done Dice Game",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "DiceFavico.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },

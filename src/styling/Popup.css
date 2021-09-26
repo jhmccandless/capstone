@@ -1,0 +1,36 @@
+.pop-up-message {
+  word-wrap: break-word;
+  width: 500px;
+  height: 75px;
+  /* height: 50px; */
+  background-color: rgb(255, 139, 216);
+  border-radius: 10px;
+  margin: 20px;
+  border: solid white;
+  box-shadow: 4px 4px white;
+  padding: 10px;
+}
+
+.popup-div {
+  height: 130px;
+}
+
+@media screen and (max-width: 668px) {
+  .popup-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pop-up-message {
+    width: 70%;
+  }
+  .pop-up-message > div {
+    margin-top: -5px;
+  }
+}
+@media screen and (max-width: 536px) {
+  .pop-up-message > div {
+    font-size: 2.8vmin;
+  }
+}

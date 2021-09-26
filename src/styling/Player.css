@@ -12,10 +12,10 @@
 }
 
 .single-player-div > p {
-  font-size: 1.75vmin;
+  font-size: 2.1vmin;
 }
 .isTurn > p {
-  font-size: 2.1vmin;
+  font-size: 2.5vmin;
 }
 
 .isTurn {
@@ -26,9 +26,36 @@
   box-shadow: 0 0 40px 20px #fff, 0 0 60px 30px #f0f;
   height: 150px;
   width: 175px;
-  padding: 25px;
+  padding: 25px 0;
 }
 
 p {
   margin: 0px;
+}
+
+@media screen and (max-width: 668px) {
+  .single-player-div {
+    height: 80px;
+    width: 130px;
+  }
+
+  .isTurn {
+    height: 110px;
+    width: 130px;
+  }
+  /* .single-player-div > p {
+    font-size: 2.8vmin;
+  }
+  .isTurn > p {
+    font-size: 3vmin;
+  } */
+}
+
+@media screen and (max-width: 500px) {
+  .single-player-div > p {
+    font-size: 2.8vmin;
+  }
+  .isTurn > p {
+    font-size: 3vmin;
+  }
 }

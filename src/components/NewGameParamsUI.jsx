@@ -5,6 +5,7 @@ import "../styling/NewGameParams.css";
 
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import { resetGameAction } from "../action";
 
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -38,6 +39,7 @@ function NewGameParamsUI({ gameParameters }) {
       gamePlayDetails.push(event.target[i].value);
     }
     gamePlayDetails.push(selectedOption);
+    resetGameAction();
     gameParameters(gamePlayDetails);
     history.push("/current_game");
   }
@@ -56,6 +58,7 @@ function NewGameParamsUI({ gameParameters }) {
                   type="text"
                   defaultValue="Player 1"
                   name="player1"
+                  maxLength="30"
                 ></input>
               </div>
               <div className="player-name">
@@ -64,11 +67,18 @@ function NewGameParamsUI({ gameParameters }) {
                   type="text"
                   defaultValue="Player 2"
                   name="player2"
+                  maxLength="30"
                 ></input>
               </div>
             </div>
             <label htmlFor="max_score">Score Goal:</label>
-            <input type="number" name="max_score" defaultValue="100"></input>
+            <input
+              type="number"
+              name="max_score"
+              defaultValue="100"
+              min="1"
+              max="1000"
+            ></input>
             <br />
             <br />
             <h3>Game Style:</h3>

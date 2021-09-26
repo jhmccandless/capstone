@@ -22,3 +22,10 @@ th,
 td {
   border-bottom: 1px solid #ddd;
 } */
+
+@media screen and (max-width: 950px) {
+  .scoreTable {
+    width: 100%;
+    overflow-x: scroll;
+  }
+}

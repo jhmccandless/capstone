@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   border-color: black;
-  height: 100px;
+  height: 150px;
   align-items: center;
   justify-items: center;
   width: min-content;
@@ -24,4 +24,13 @@
 .single_dice > p {
   margin: 0;
   font-size: 30pt;
+}
+
+.popup-message {
+  font-size: 12pt;
+}
+
+.pointer {
+  cursor: pointer;
+  user-select: none;
 }

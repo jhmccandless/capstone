@@ -1,7 +1,6 @@
 import React from "react";
 
 function ButtonUI({ handleDesiredClick, name }) {
-  // console.log(handleDesiredClick);
   return (
     <>
       <button
