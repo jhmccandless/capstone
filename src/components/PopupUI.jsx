@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import { disableHoldAction } from "../action.js";
 
 function PopupUI(props) {
-  console.log(props.disableHold);
   useEffect(() => {
-    console.log("inside useEffect");
     props.disableHold();
   });
 

@@ -21,7 +21,6 @@ const initialState = {
 };
 
 function game_reducer(state = initialState, action) {
-  // console.log(action);
   switch (action.type) {
     case "GAME_PARAMETERS":
       return {
@@ -81,7 +80,6 @@ function game_reducer(state = initialState, action) {
       const scoreToCheck = state.playerInfo[action.data[1]].score;
       const possibleWinner = scoreToCheck + action.data[4];
       if (possibleWinner >= state.gameEndTotal) {
-        console.log("winner");
         return {
           ...state,
           diceRoll: [0, 0],
